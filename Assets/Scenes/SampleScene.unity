@@ -396,7 +396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Liftcomponent
   max_lift_force: 10
   main_body: {fileID: 1658372846}
-  use_key: 122
+  use_key: 99
 --- !u!1 &1363694241
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,7 +667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f01c0d70966274a90290d6ff040293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Steeringcomponent
-  tilt_ratio: 0
+  tilt_ratio: 0.6
   FL_propeller: {fileID: 547150044}
   FR_propeller: {fileID: 83342622}
   BL_propeller: {fileID: 1790855536}
@@ -718,7 +718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Liftcomponent
   max_lift_force: 10
   main_body: {fileID: 1658372846}
-  use_key: 99
+  use_key: 122
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
