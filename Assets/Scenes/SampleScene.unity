@@ -572,7 +572,7 @@ GameObject:
   - component: {fileID: 1658372851}
   - component: {fileID: 1658372852}
   m_Layer: 0
-  m_Name: Main drone
+  m_Name: Quadrocopter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -710,17 +710,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1658372846}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3f01c0d70966274a90290d6ff040293, type: 3}
+  m_Script: {fileID: 11500000, guid: 845b36152ad1e6048b324eb7e1f597c0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Steeringcomponent
+  m_EditorClassIdentifier: Assembly-CSharp::Quadrocopter
   tilt_ratio: 0.2
+  center_of_mass: {fileID: 1639191449}
   FL_propeller: {fileID: 547150044}
   FR_propeller: {fileID: 83342622}
   BL_propeller: {fileID: 1790855536}
   BR_propeller: {fileID: 1355920846}
-  center_of_mass: {fileID: 1639191449}
 --- !u!1 &1790855536
 GameObject:
   m_ObjectHideFlags: 0

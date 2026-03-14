@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class transformfbybutton : MonoBehaviour
+public class transformbybutton : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] float rot_speed;
