@@ -1,5 +1,7 @@
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
+
+[RequireComponent(typeof(Rigidbody))]
 
 public class Steeringcomponent : MonoBehaviour
 {
@@ -9,25 +11,29 @@ public class Steeringcomponent : MonoBehaviour
     [SerializeField] GameObject FR_propeller;
     [SerializeField] GameObject BL_propeller;
     [SerializeField] GameObject BR_propeller;
-
-    Dictionary<string, Liftcomponent> propellers;
+    [SerializeField] GameObject center_of_mass;
+    Dictionary<string, Propeller> propellers;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        propellers = new Dictionary<string, Liftcomponent>
+        propellers = new Dictionary<string, Propeller>
         {
-            ["FL"] = FL_propeller.GetComponent<Liftcomponent>(),
-            ["FR"] = FR_propeller.GetComponent<Liftcomponent>(),
-            ["BL"] = BL_propeller.GetComponent<Liftcomponent>(),
-            ["BR"] = BR_propeller.GetComponent<Liftcomponent>()
+            ["FL"] = FL_propeller.GetComponent<Propeller>(),
+            ["FR"] = FR_propeller.GetComponent<Propeller>(),
+            ["BL"] = BL_propeller.GetComponent<Propeller>(),
+            ["BR"] = BR_propeller.GetComponent<Propeller>()
         };
-
+        GetComponent<Rigidbody>().centerOfMass = center_of_mass.transform.localPosition;
     }
     // Update is called once per frame
     void Update()
     {
-        //Key to propeller activation
+        ActivateManualSteering();
+    }
+
+    void ActivateManualSteering()
+    {
         {
         if (Input.GetKey(KeyCode.W))
         {
@@ -61,4 +67,5 @@ public class Steeringcomponent : MonoBehaviour
         }
         }
     }
+
 }

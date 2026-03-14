@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class Liftcomponent : MonoBehaviour
+public class Propeller : MonoBehaviour
 {
     [SerializeField] [Tooltip("Максимальная сила подъёма пропеллера")] public float max_lift_force;
-    [SerializeField] GameObject main_body;
+    [SerializeField] [Tooltip("К какому дрону прикреплён пропеллер")]GameObject main_body;
     [SerializeField] KeyCode use_key;
     Rigidbody rb;  
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -30,7 +30,6 @@ public class Liftcomponent : MonoBehaviour
 /// <summary>
 /// Sets propeller force to a ratio of its max force, clamped to [0,1]
 /// </summary>
-/// <param name="ratio"></param>
     public void SetPropellerForceFromRatio(float ratio)
     {
         if(ratio < 0) ratio = 0;
