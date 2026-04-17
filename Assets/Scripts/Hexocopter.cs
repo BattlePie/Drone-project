@@ -10,8 +10,9 @@ public class Hexocopter : Drone
     [SerializeField] GameObject L_propeller;
     [SerializeField] GameObject R_propeller;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
+    protected override void Start()
+    {base.Start();
+    
         propellers = new Dictionary<string, Propeller>
         {
             ["FL"] = FL_propeller.GetComponent<Propeller>(),
@@ -24,12 +25,12 @@ public class Hexocopter : Drone
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        ActivateManualSteering();
+    protected override void Update()
+    {base.Update();
+    
     }
 
-    override public void ActivateManualSteering()
+    override public void ManualSteering()
     {
         {
         if (Input.GetKey(KeyCode.W))

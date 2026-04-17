@@ -2,14 +2,16 @@ using UnityEngine;
 
 public class Propeller : MonoBehaviour
 {
-    [SerializeField] [Tooltip("Максимальная сила подъёма пропеллера")] public float max_lift_force;
-    [SerializeField] [Tooltip("К какому дрону прикреплён пропеллер")]GameObject main_body;
+ 
+    public float curr_force;
+    [SerializeField] [Tooltip("Максимальная сила подъёма пропеллера")] public float max_force = 5f;
     [SerializeField] KeyCode use_key;
-    Rigidbody rb;  
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] GameObject Drone;
+    Rigidbody rb;
+
     void Start()
     {
-        rb = main_body.GetComponent<Rigidbody>();
+        rb = Drone.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -19,22 +21,28 @@ public class Propeller : MonoBehaviour
         {
             SetPropellerForceFromRatio(1);
         }
+        else
+        {
+            curr_force = 0;
+        }
     }
-    public void SetPropellerForce(float force)
-    {
-        if(force < 0) force = 0;
-        if(force > max_lift_force) force = max_lift_force;
+    public void SetPropellerForce(float i_curr_force)
+    {   
+        if(i_curr_force < 0) curr_force = 0;
+        else if(i_curr_force > max_force) curr_force = max_force;
+        else curr_force = i_curr_force;
 
-        rb.AddForce(force * Time.deltaTime * Vector3.up, ForceMode.VelocityChange);
+        rb.AddForceAtPosition(curr_force * Time.deltaTime * Vector3.up, transform.position, ForceMode.VelocityChange);
     }
 /// <summary>
-/// Sets propeller force to a ratio of its max force, clamped to [0,1]
+/// Sets propeller curr_force to a ratio of its max curr_force, clamped to [0,1]
 /// </summary>
     public void SetPropellerForceFromRatio(float ratio)
-    {
+    {   
         if(ratio < 0) ratio = 0;
-        if(ratio > 1) ratio = 1;
+        else if(ratio > 1) ratio = 1;
+        else curr_force = max_force * ratio;
 
-        rb.AddForceAtPosition(ratio * max_lift_force * Time.deltaTime * transform.up, transform.position, ForceMode.VelocityChange);
+        rb.AddForceAtPosition(ratio * max_force * Time.deltaTime * transform.up, transform.position, ForceMode.VelocityChange);
     }
 }
