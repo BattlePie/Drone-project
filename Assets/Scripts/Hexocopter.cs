@@ -25,12 +25,12 @@ public class Hexocopter : Drone
     }
 
     // Update is called once per frame
-    protected override void Update()
-    {base.Update();
+    protected override void FixedUpdate()
+    {base.FixedUpdate();
     
     }
 
-    override public void ManualSteering()
+    override protected void ManualSteering()
     {
         {
         if (Input.GetKey(KeyCode.W))

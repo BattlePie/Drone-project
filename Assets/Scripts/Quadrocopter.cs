@@ -1,18 +1,17 @@
 using UnityEngine;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 
 public class Quadrocopter : Drone
 {
-//~2.45 all prop activation for stasis
 
     [SerializeField] GameObject FL_propeller;
     [SerializeField] GameObject FR_propeller;
     [SerializeField] GameObject BL_propeller;
     [SerializeField] GameObject BR_propeller;
-    bool activate_stabilization = false;
+    bool vert_stabilization = false;
+    bool targeted_flight = false;
+    Vector3 flight_target;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {base.Start();
         propellers = new Dictionary<string, Propeller> {
@@ -21,20 +20,30 @@ public class Quadrocopter : Drone
             ["BL"] = BL_propeller.GetComponent<Propeller>(),
             ["BR"] = BR_propeller.GetComponent<Propeller>()};        
 
-        //stasis_force = FindStasisForce(propellers.Count, propellers[0].max_force, rb.mass);  
-        stasis_force = 2.45f;
+        stasis_force = FindStasisForce(propellers.Count, propellers["FL"].max_force, rb.mass);  
+        //stasis_force = 2.45f;
     }
 
-    protected override void Update()
-    {base.Update();
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Comma))  vert_stabilization = true;
+        if(Input.GetKeyDown(KeyCode.Period)) vert_stabilization = false;
 
-        if(Input.GetKeyDown(KeyCode.Comma))  activate_stabilization = true;
-        if(Input.GetKeyDown(KeyCode.Period)) activate_stabilization = false;
+        if(Input.GetKeyDown(KeyCode.Semicolon)) {flight_target = transform.position;  targeted_flight = true;}
+        if(Input.GetKeyDown(KeyCode.Quote)) targeted_flight = false;
+    }
+    protected override void FixedUpdate()
+    {base.FixedUpdate();
+
+        if(vert_stabilization)VerticalStabilization(altimeter.GetReading());
+
+        //Fly to target
+        if (targeted_flight)
+        {}
         
-        if(activate_stabilization)VerticalStabilization(altimeter.GetReading());
     }
 
-override public void ManualSteering()
+override protected void ManualSteering()
     {
         {
         if (Input.GetKey(KeyCode.W))

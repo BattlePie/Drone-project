@@ -13,7 +13,14 @@ public class Dirtybuttons : MonoBehaviour
         {
             quadrocopter.transform.position = new Vector3(0, 1, -1);
             quadrocopter.transform.rotation = new Quaternion(0,0,0,0);
+            quadrocopter.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
+            quadrocopter.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             Debug.Log("Drone reset");
+        }
+        if (GUI.Button(new Rect(20, 70, 130, 20), "Turn on wind"))
+        {
+            
+            Debug.Log("Wind on");
         }
     }
 

@@ -15,7 +15,7 @@ public class Propeller : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.Space) || Input.GetKey(use_key))
         {
@@ -32,7 +32,7 @@ public class Propeller : MonoBehaviour
         else if(i_curr_force > max_force) curr_force = max_force;
         else curr_force = i_curr_force;
 
-        rb.AddForceAtPosition(curr_force * Time.deltaTime * Vector3.up, transform.position, ForceMode.VelocityChange);
+        rb.AddForceAtPosition(curr_force * Vector3.up, transform.position, ForceMode.Force);
     }
 /// <summary>
 /// Sets propeller curr_force to a ratio of its max curr_force, clamped to [0,1]
@@ -43,6 +43,6 @@ public class Propeller : MonoBehaviour
         else if(ratio > 1) ratio = 1;
         else curr_force = max_force * ratio;
 
-        rb.AddForceAtPosition(ratio * max_force * Time.deltaTime * transform.up, transform.position, ForceMode.VelocityChange);
+        rb.AddForceAtPosition(ratio * max_force * transform.up, transform.position, ForceMode.Force);
     }
 }
