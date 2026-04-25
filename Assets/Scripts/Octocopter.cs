@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 public class Octocopter : Drone
 {
-    [SerializeField] GameObject FL_propeller;
+    [SerializeField] GameObject F_propeller;
     [SerializeField] GameObject FR_propeller;
-    [SerializeField] GameObject LF_propeller;
-    [SerializeField] GameObject RF_propeller;
-    [SerializeField] GameObject LB_propeller;
-    [SerializeField] GameObject RB_propeller;
-    [SerializeField] GameObject BL_propeller;
+    [SerializeField] GameObject R_propeller;
     [SerializeField] GameObject BR_propeller;
+    [SerializeField] GameObject B_propeller;
+    [SerializeField] GameObject BL_propeller;
+    [SerializeField] GameObject L_propeller;
+    [SerializeField] GameObject FL_propeller;
     bool vert_stabilization = false;
     bool targeted_flight = false;
     Vector3 flight_target;
@@ -19,14 +19,14 @@ public class Octocopter : Drone
     {base.Start();
         propellers = new Dictionary<string, Propeller>
         {
-            ["FL"] = FL_propeller.GetComponent<Propeller>(),
+            ["F"] = F_propeller.GetComponent<Propeller>(),
             ["FR"] = FR_propeller.GetComponent<Propeller>(),
-            ["LF"] = LF_propeller.GetComponent<Propeller>(),
-            ["RF"] = RF_propeller.GetComponent<Propeller>(),
-            ["LB"] = LB_propeller.GetComponent<Propeller>(),
-            ["RB"] = RB_propeller.GetComponent<Propeller>(),
+            ["R"] = R_propeller.GetComponent<Propeller>(),
+            ["BR"] = BR_propeller.GetComponent<Propeller>(),
+            ["B"] = B_propeller.GetComponent<Propeller>(),
             ["BL"] = BL_propeller.GetComponent<Propeller>(),
-            ["BR"] = BR_propeller.GetComponent<Propeller>()
+            ["L"] = L_propeller.GetComponent<Propeller>(),
+            ["FL"] = FL_propeller.GetComponent<Propeller>()
         };
         stasis_force = FindStasisForce(propellers.Count, propellers["FL"].max_force, rb.mass);  
         //stasis_force = 1.23f;
@@ -55,47 +55,47 @@ public class Octocopter : Drone
         {
         if (Input.GetKey(KeyCode.W))
         {
-            propellers["BL"].SetPropellerForceFromRatio(1);
-            propellers["BR"].SetPropellerForceFromRatio(1);
-            propellers["LF"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["RF"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["LB"].SetPropellerForceFromRatio(1);
-            propellers["RB"].SetPropellerForceFromRatio(1);
-            propellers["FL"].SetPropellerForceFromRatio(tilt_ratio);
+            propellers["F"].SetPropellerForceFromRatio(tilt_ratio);
             propellers["FR"].SetPropellerForceFromRatio(tilt_ratio);
+            propellers["R"].SetPropellerForceFromRatio(0);
+            propellers["BR"].SetPropellerForceFromRatio(1);
+            propellers["B"].SetPropellerForceFromRatio(1);
+            propellers["BL"].SetPropellerForceFromRatio(1);
+            propellers["L"].SetPropellerForceFromRatio(0);
+            propellers["FL"].SetPropellerForceFromRatio(tilt_ratio);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            propellers["BL"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["BR"].SetPropellerForceFromRatio(1);
-            propellers["LF"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["RF"].SetPropellerForceFromRatio(1);
-            propellers["LB"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["RB"].SetPropellerForceFromRatio(1);
-            propellers["FL"].SetPropellerForceFromRatio(tilt_ratio);
+            propellers["F"].SetPropellerForceFromRatio(0);
             propellers["FR"].SetPropellerForceFromRatio(1);
+            propellers["R"].SetPropellerForceFromRatio(1);
+            propellers["BR"].SetPropellerForceFromRatio(1);
+            propellers["B"].SetPropellerForceFromRatio(0);
+            propellers["BL"].SetPropellerForceFromRatio(tilt_ratio);
+            propellers["L"].SetPropellerForceFromRatio(tilt_ratio);
+            propellers["FL"].SetPropellerForceFromRatio(tilt_ratio);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            propellers["BL"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["BR"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["LF"].SetPropellerForceFromRatio(1);
-            propellers["RF"].SetPropellerForceFromRatio(1);
-            propellers["LB"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["RB"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["FL"].SetPropellerForceFromRatio(1);
+            propellers["F"].SetPropellerForceFromRatio(1);
             propellers["FR"].SetPropellerForceFromRatio(1);
+            propellers["R"].SetPropellerForceFromRatio(0);
+            propellers["BR"].SetPropellerForceFromRatio(tilt_ratio);
+            propellers["B"].SetPropellerForceFromRatio(tilt_ratio);
+            propellers["BL"].SetPropellerForceFromRatio(tilt_ratio);
+            propellers["L"].SetPropellerForceFromRatio(0);
+            propellers["FL"].SetPropellerForceFromRatio(1);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            propellers["BL"].SetPropellerForceFromRatio(1);
-            propellers["BR"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["LF"].SetPropellerForceFromRatio(1);
-            propellers["RF"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["LB"].SetPropellerForceFromRatio(1);
-            propellers["RB"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["FL"].SetPropellerForceFromRatio(1);
+            propellers["F"].SetPropellerForceFromRatio(0);
             propellers["FR"].SetPropellerForceFromRatio(tilt_ratio);
+            propellers["R"].SetPropellerForceFromRatio(tilt_ratio);
+            propellers["BR"].SetPropellerForceFromRatio(tilt_ratio);
+            propellers["B"].SetPropellerForceFromRatio(0);
+            propellers["BL"].SetPropellerForceFromRatio(1);
+            propellers["L"].SetPropellerForceFromRatio(1);
+            propellers["FL"].SetPropellerForceFromRatio(1);
         }
         }
     }
