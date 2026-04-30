@@ -4,10 +4,10 @@ using System.Collections.Generic;
 public class Quadrocopter : Drone
 {
 
-    [SerializeField] GameObject FL_propeller;
-    [SerializeField] GameObject FR_propeller;
-    [SerializeField] GameObject BL_propeller;
-    [SerializeField] GameObject BR_propeller;
+    [SerializeField] public GameObject FL_propeller;
+    [SerializeField] public GameObject FR_propeller;
+    [SerializeField] public GameObject BL_propeller;
+    [SerializeField] public GameObject BR_propeller;
     bool vert_stabilization = false;
     bool targeted_flight = false;
     Vector3 flight_target;
@@ -20,10 +20,8 @@ public class Quadrocopter : Drone
             ["BL"] = BL_propeller.GetComponent<Propeller>(),
             ["BR"] = BR_propeller.GetComponent<Propeller>()};        
 
-        stasis_force = FindStasisForce(propellers.Count, propellers["FL"].max_force, rb.mass);  
-        //stasis_force = 2.45f;
+        stasis_force = FindStasisForce(propellers.Count, propellers["FL"].max_force, rb.mass, Mathf.Deg2Rad * Vector3.Angle(Vector3.up, transform.up));
     }
-
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Comma))  vert_stabilization = true;
@@ -42,12 +40,12 @@ public class Quadrocopter : Drone
         {}
         
     }
-
 override protected void ManualSteering()
     {
         {
         if (Input.GetKey(KeyCode.W))
         {
+
             propellers["BL"].SetPropellerForceFromRatio(1);
             propellers["BR"].SetPropellerForceFromRatio(1);
             propellers["FL"].SetPropellerForceFromRatio(tilt_ratio);

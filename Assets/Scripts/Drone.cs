@@ -7,7 +7,7 @@ using System;
 public abstract class Drone : MonoBehaviour
 {
     [SerializeField] [Tooltip("Пропорции включения первичных vs вторичных пропеллеров, при 1 вторичные пропллеры включаются на полную мощность, при нуле включаются только первичные")]
-    protected float tilt_ratio = 0.2f;
+    protected float tilt_ratio = 0.8f;
     [SerializeField] GameObject center_of_mass;
     [SerializeField] GameObject i_gyroscope;
     [SerializeField] GameObject i_altimeter;
@@ -31,9 +31,9 @@ public abstract class Drone : MonoBehaviour
         ManualSteering();
         ConstantPropActivation(constant_prop_activation);
     }
-    protected float FindStasisForce(int n_propellers, float max_propeller_force, float drone_mass)
+    protected float FindStasisForce(int n_propellers, float max_propeller_force, float drone_mass, float tilt)
     {
-        float res = drone_mass * Physics.gravity.magnitude / n_propellers;        
+        float res = drone_mass * Physics.gravity.magnitude / n_propellers / (float)Math.Cos(tilt);
 
         if(res > max_propeller_force) throw new Exception("Нелетающий дрон, сила стазиса больше максимальной!");
         Debug.Log(n_propellers + "-пропеллерный, С.С.= " + res);

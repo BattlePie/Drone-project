@@ -2,29 +2,24 @@ using UnityEngine;
 
 public class Propeller : MonoBehaviour
 {
- 
-    public float curr_force;
+    public enum RotDirection{CW = -1, CCW = 1};
+    Rigidbody rb;
+    [SerializeField] public float curr_force;
     [SerializeField] [Tooltip("Максимальная сила подъёма пропеллера")] public float max_force = 5f;
     [SerializeField] KeyCode use_key;
     [SerializeField] GameObject Drone;
-    Rigidbody rb;
-
+    [SerializeField] public RotDirection rotation_direction = RotDirection.CCW;
     void Start()
-    {
+    { 
         rb = Drone.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.Space) || Input.GetKey(use_key))
-        {
-            SetPropellerForceFromRatio(1);
-        }
-        else
-        {
-            curr_force = 0;
-        }
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(use_key)) SetPropellerForceFromRatio(1);
+        else curr_force = 0;
+        ApplyReactiveTorque();
     }
     public void SetPropellerForce(float i_curr_force)
     {   
@@ -44,5 +39,11 @@ public class Propeller : MonoBehaviour
         else curr_force = max_force * ratio;
 
         rb.AddForceAtPosition(ratio * max_force * transform.up, transform.position, ForceMode.Force);
+    }
+
+    public void ApplyReactiveTorque()
+    {
+        float force_amount = 0;///BIG
+        rb.AddRelativeTorque(Vector3.up * force_amount * (int)rotation_direction);
     }
 }
