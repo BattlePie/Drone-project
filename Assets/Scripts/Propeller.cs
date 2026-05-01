@@ -7,12 +7,13 @@ public class Propeller : MonoBehaviour
     [SerializeField] public float curr_force;
     [SerializeField] [Tooltip("Максимальная сила подъёма пропеллера")] public float max_force = 5f;
     [SerializeField] KeyCode use_key;
-    [SerializeField] GameObject Drone;
+    [SerializeField] Drone Drone;
     [SerializeField] public RotDirection rotation_direction = RotDirection.CCW;
     void Start()
     { 
         rb = Drone.GetComponent<Rigidbody>();
     }
+
 
     // Update is called once per frame
     void FixedUpdate()
@@ -23,10 +24,10 @@ public class Propeller : MonoBehaviour
     }
     public void SetPropellerForce(float i_curr_force)
     {   
-        if(i_curr_force < 0) curr_force = 0;
-        else if(i_curr_force > max_force) curr_force = max_force;
-        else curr_force = i_curr_force;
+        if(i_curr_force < 0) Debug.LogWarning("Tried to set propeller activation below zero: " + i_curr_force); 
+        else if(i_curr_force > max_force) Debug.LogWarning("Tried to set propeller activation above max: " + i_curr_force);
 
+        curr_force = Mathf.Clamp(i_curr_force, 0, max_force);
         rb.AddForceAtPosition(curr_force * Vector3.up, transform.position, ForceMode.Force);
     }
 /// <summary>
@@ -34,16 +35,16 @@ public class Propeller : MonoBehaviour
 /// </summary>
     public void SetPropellerForceFromRatio(float ratio)
     {   
-        if(ratio < 0) ratio = 0;
-        else if(ratio > 1) ratio = 1;
-        else curr_force = max_force * ratio;
+        if(ratio < 0) Debug.LogWarning("Tried to set propeller activation below zero: " + ratio);
+        else if(ratio > 1) Debug.LogWarning("Tried to set propeller activation above max: " + ratio);
 
+        curr_force = Mathf.Clamp(ratio, 0, 1);
         rb.AddForceAtPosition(ratio * max_force * transform.up, transform.position, ForceMode.Force);
     }
 
     public void ApplyReactiveTorque()
     {
-        float force_amount = 0;///BIG
+        float force_amount = 0;///FIND AND CHANGE TO THE FORMULA OF REACTIVE TORQUE
         rb.AddRelativeTorque(Vector3.up * force_amount * (int)rotation_direction);
     }
 }

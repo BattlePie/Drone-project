@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class Windsimulation : MonoBehaviour
 {
-    [SerializeField] public GameObject particles;
+    [SerializeField] public ParticleSystem particles;
     [SerializeField] public LayerMask ignore_layer;
     Collider[] colliders;
     BoxCollider wind_zone;

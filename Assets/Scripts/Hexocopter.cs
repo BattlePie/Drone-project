@@ -3,30 +3,33 @@ using System.Collections.Generic;
 
 public class Hexocopter : Drone
 {
-    [SerializeField] GameObject FL_propeller;
-    [SerializeField] GameObject FR_propeller;
-    [SerializeField] GameObject BL_propeller;
-    [SerializeField] GameObject BR_propeller;
-    [SerializeField] GameObject L_propeller;
-    [SerializeField] GameObject R_propeller;
+    [SerializeField] Propeller FL_propeller;
+    [SerializeField] Propeller FR_propeller;
+    [SerializeField] Propeller BL_propeller;
+    [SerializeField] Propeller BR_propeller;
+    [SerializeField] Propeller L_propeller;
+    [SerializeField] Propeller R_propeller;
     bool vert_stabilization = false;
     bool targeted_flight = false;
     Vector3 flight_target;
 
+    protected override void Awake()
+    {
+        base.Awake();
+    }
     protected override void Start()
     {base.Start();
     
         propellers = new Dictionary<string, Propeller>
         {
-            ["FL"] = FL_propeller.GetComponent<Propeller>(),
-            ["FR"] = FR_propeller.GetComponent<Propeller>(),
-            ["BL"] = BL_propeller.GetComponent<Propeller>(),
-            ["BR"] = BR_propeller.GetComponent<Propeller>(),
-            ["L"] = L_propeller.GetComponent<Propeller>(),
-            ["R"] = R_propeller.GetComponent<Propeller>()
+            ["FL"] = FL_propeller,
+            ["FR"] = FR_propeller,
+            ["BL"] = BL_propeller,
+            ["BR"] = BR_propeller,
+            ["L"] = L_propeller,
+            ["R"] = R_propeller
         };
-        stasis_force = FindStasisForce(propellers.Count, propellers["FL"].max_force, rb.mass);  
-        //stasis_force = 1.63f;
+        stasis_force = FindStasisForce(propellers.Count, propellers["FL"].max_force, rb.mass);//,Mathf.Deg2Rad * Vector3.Angle(Vector3.up, transform.up));  
     }
 
     void Update()
@@ -47,7 +50,6 @@ public class Hexocopter : Drone
         {}
         
     }
-
     override protected void ManualSteering()
     {
         {

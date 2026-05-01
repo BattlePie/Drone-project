@@ -11,7 +11,8 @@ public class QuadDebugScreen : MonoBehaviour
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
-    {   FL = drone.FL_propeller.GetComponent<Propeller>();
+    {   
+        FL = drone.FL_propeller.GetComponent<Propeller>();
         FR = drone.FR_propeller.GetComponent<Propeller>();
         BL = drone.BL_propeller.GetComponent<Propeller>();
         BR = drone.BR_propeller.GetComponent<Propeller>();

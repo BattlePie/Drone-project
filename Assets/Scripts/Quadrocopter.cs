@@ -4,23 +4,27 @@ using System.Collections.Generic;
 public class Quadrocopter : Drone
 {
 
-    [SerializeField] public GameObject FL_propeller;
-    [SerializeField] public GameObject FR_propeller;
-    [SerializeField] public GameObject BL_propeller;
-    [SerializeField] public GameObject BR_propeller;
+    [SerializeField] public Propeller FL_propeller;
+    [SerializeField] public Propeller FR_propeller;
+    [SerializeField] public Propeller BL_propeller;
+    [SerializeField] public Propeller BR_propeller;
     bool vert_stabilization = false;
     bool targeted_flight = false;
     Vector3 flight_target;
 
+    protected override void Awake()
+    {
+        base.Awake();
+    }
     protected override void Start()
     {base.Start();
         propellers = new Dictionary<string, Propeller> {
-            ["FL"] = FL_propeller.GetComponent<Propeller>(),
-            ["FR"] = FR_propeller.GetComponent<Propeller>(),
-            ["BL"] = BL_propeller.GetComponent<Propeller>(),
-            ["BR"] = BR_propeller.GetComponent<Propeller>()};        
+            ["FL"] = FL_propeller,
+            ["FR"] = FR_propeller,
+            ["BL"] = BL_propeller,
+            ["BR"] = BR_propeller};        
 
-        stasis_force = FindStasisForce(propellers.Count, propellers["FL"].max_force, rb.mass, Mathf.Deg2Rad * Vector3.Angle(Vector3.up, transform.up));
+        stasis_force = FindStasisForce(propellers.Count, propellers["FL"].max_force, rb.mass);//, Mathf.Deg2Rad * Vector3.Angle(Vector3.up, transform.up));
     }
     void Update()
     {
