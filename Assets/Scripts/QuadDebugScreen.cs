@@ -19,7 +19,7 @@ public class QuadDebugScreen : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         FL_force = FL.curr_force;
         FR_force = FR.curr_force;

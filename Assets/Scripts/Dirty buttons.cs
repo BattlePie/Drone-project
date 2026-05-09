@@ -21,7 +21,7 @@ public class Dirtybuttons : MonoBehaviour
             quadrocopter.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             Debug.Log("Drone reset");
         }
-        if (GUI.Button(new Rect(20, 60, 130, 20), "Reset Hex"))
+        if (GUI.Button(new Rect(20, 60, 130, 20), "Reset Octo"))
         {
             octocopter.transform.position = new Vector3(1, 1, 1);
             octocopter.transform.rotation = new Quaternion(0,0,0,0);
@@ -29,7 +29,7 @@ public class Dirtybuttons : MonoBehaviour
             octocopter.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             Debug.Log("Drone reset");
         }
-        if (GUI.Button(new Rect(20, 80, 130, 20), "Reset Octo"))
+        if (GUI.Button(new Rect(20, 80, 130, 20), "Reset Hex"))
         {
             hexacopter.transform.position = new Vector3(-1, 1, 1);
             hexacopter.transform.rotation = new Quaternion(0,0,0,0);
