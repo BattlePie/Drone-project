@@ -9,7 +9,7 @@ public abstract class Drone : MonoBehaviour
     protected float tilt_ratio = 0.8f;
     [SerializeField] GameObject center_of_mass;
     [SerializeField] public Gyroscope gyroscope;
-    [SerializeField] public Barometer barometer;
+    [SerializeField] public WeatherStation weather_station;
     [SerializeField] float constant_prop_activation;
     protected Dictionary<string, Propeller> propellers;
     protected Rigidbody rb;
@@ -32,7 +32,8 @@ public abstract class Drone : MonoBehaviour
     }
     protected void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Comma)){ target_v_stab_height = barometer.GetReading(); vert_stabilization = true;}
+        weather_station.GetAirDensity();
+        if(Input.GetKeyDown(KeyCode.Comma)){ target_v_stab_height = weather_station.GetHeight(); vert_stabilization = true;}
         if(Input.GetKeyDown(KeyCode.Period)) vert_stabilization = false;
 
         //if(Input.GetKeyDown(KeyCode.Semicolon)) {flight_target = transform.position;  targeted_flight = true;}
@@ -55,11 +56,11 @@ public abstract class Drone : MonoBehaviour
     public void VerticalStabilization(float target_height)
     {
         Debug.Log(name + " target height: " + target_height);
-        float height = barometer.GetReading();
+        float height = weather_station.GetHeight();
         float target_force;
         if (float.IsInfinity(height))
         {
-            Debug.LogWarning(barometer + " can't see the ground, lowering the drone");
+            Debug.LogWarning(weather_station + " can't see the ground, lowering the drone");
             target_force = stasis_force * 0.9f;
             foreach(Propeller prop in propellers.Values) prop.SetPropellerForce(target_force);
             return;
@@ -76,7 +77,7 @@ public abstract class Drone : MonoBehaviour
         throw new NotImplementedException();
     }
 
-    public void ConstantPropActivation(float value){
+    public void ConstantPropActivation(float value){//for testing 
 
          foreach(Propeller prop in propellers.Values) prop.SetPropellerForce(value);
     }

@@ -15,10 +15,11 @@ public class Propeller : MonoBehaviour
     [SerializeField] KeyCode use_key;
     [SerializeField] Drone drone;
 
-    [Header("Physical characteristics\n(default is DJI MAVIC 3 9453F low-noise) and guessing")]
+    [Header("Physical characteristics\n(default is DJI MAVIC 3 9453F low-noise) and rough estimations")]
     [SerializeField] public RotDirection rotation_direction = RotDirection.CCW;
-    [SerializeField] public float RPM;
-    [SerializeField] public float torque_coefficient = 0.3f;
+    [SerializeField] public float RPM;//NEXT, RPM DOES NOT CHANGE
+    [SerializeField] public float thrust_coefficient = 0.0724f;
+    [SerializeField] public float torque_coefficient = 0.0724f * 0.8f;//thr_coeff * 0.5-1.0
     [SerializeField] public float radius_inch = 9.4f;
     [SerializeField] public float step_inch = 5.3f;
 
@@ -69,8 +70,8 @@ public class Propeller : MonoBehaviour
 
     public void ApplyReactiveTorque()
     {
-        double aerodynamic_resistance = torque_coefficient * drone.barometer.GetPressure()*Math.Pow(radius_inch, 5) * Math.PI;
+        double aerodynamic_resistance = torque_coefficient * drone.weather_station.GetAirDensity() * Math.Pow(radius_inch, 5) * Math.PI;
         double force_amount = angular_speed * angular_speed * aerodynamic_resistance;
-        rb.AddRelativeTorque(transform.up * (float)force_amount * (int)rotation_direction);
+        rb.AddRelativeTorque((float)force_amount * (int)rotation_direction * transform.up);
     }
 }

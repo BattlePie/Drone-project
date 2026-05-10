@@ -169,9 +169,10 @@ MonoBehaviour:
   curr_force: 0
   max_force: 10
   use_key: 101
-  drone: {fileID: 0}
+  drone: {fileID: 1658372852}
   rotation_direction: 1
   RPM: 0
+  thrust_coefficient: 0.0724
   torque_coefficient: 0.3
   radius_inch: 9.4
   step_inch: 5.3
@@ -210,9 +211,10 @@ MonoBehaviour:
   curr_force: 0
   max_force: 10
   use_key: 108
-  drone: {fileID: 0}
+  drone: {fileID: 653091362}
   rotation_direction: 1
   RPM: 0
+  thrust_coefficient: 0.0724
   torque_coefficient: 0.3
   radius_inch: 9.4
   step_inch: 5.3
@@ -265,10 +267,11 @@ MonoBehaviour:
   step: 0
   curr_force: 0
   max_force: 10
-  use_key: 44
-  drone: {fileID: 0}
+  use_key: 48
+  drone: {fileID: 2045085488}
   rotation_direction: 1
   RPM: 0
+  thrust_coefficient: 0.0724
   torque_coefficient: 0.3
   radius_inch: 9.4
   step_inch: 5.3
@@ -322,9 +325,10 @@ MonoBehaviour:
   curr_force: 0
   max_force: 10
   use_key: 44
-  drone: {fileID: 0}
+  drone: {fileID: 653091362}
   rotation_direction: 1
   RPM: 0
+  thrust_coefficient: 0.0724
   torque_coefficient: 0.3
   radius_inch: 9.4
   step_inch: 5.3
@@ -377,10 +381,11 @@ MonoBehaviour:
   step: 0
   curr_force: 0
   max_force: 10
-  use_key: 44
-  drone: {fileID: 0}
+  use_key: 48
+  drone: {fileID: 2045085488}
   rotation_direction: 1
   RPM: 0
+  thrust_coefficient: 0.0724
   torque_coefficient: 0.3
   radius_inch: 9.4
   step_inch: 5.3
@@ -434,9 +439,10 @@ MonoBehaviour:
   curr_force: 0
   max_force: 10
   use_key: 106
-  drone: {fileID: 0}
+  drone: {fileID: 653091362}
   rotation_direction: 1
   RPM: 0
+  thrust_coefficient: 0.0724
   torque_coefficient: 0.3
   radius_inch: 9.4
   step_inch: 5.3
@@ -600,9 +606,10 @@ MonoBehaviour:
   curr_force: 0
   max_force: 10
   use_key: 113
-  drone: {fileID: 0}
-  rotation_direction: 1
+  drone: {fileID: 1658372852}
+  rotation_direction: -1
   RPM: 0
+  thrust_coefficient: 0.0724
   torque_coefficient: 0.3
   radius_inch: 9.4
   step_inch: 5.3
@@ -640,10 +647,11 @@ MonoBehaviour:
   step: 0
   curr_force: 0
   max_force: 10
-  use_key: 44
-  drone: {fileID: 0}
+  use_key: 48
+  drone: {fileID: 2045085488}
   rotation_direction: 1
   RPM: 0
+  thrust_coefficient: 0.0724
   torque_coefficient: 0.3
   radius_inch: 9.4
   step_inch: 5.3
@@ -720,7 +728,7 @@ Transform:
   m_GameObject: {fileID: 556252843}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000026989035, y: -0.000000016590377, z: -4.477583e-16, w: 1}
-  m_LocalPosition: {x: -7.129999, y: 0.5099993, z: -7.8739495}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -760,10 +768,11 @@ MonoBehaviour:
   step: 0
   curr_force: 0
   max_force: 10
-  use_key: 44
-  drone: {fileID: 0}
+  use_key: 48
+  drone: {fileID: 2045085488}
   rotation_direction: 1
   RPM: 0
+  thrust_coefficient: 0.0724
   torque_coefficient: 0.3
   radius_inch: 9.4
   step_inch: 5.3
@@ -916,7 +925,7 @@ MonoBehaviour:
   tilt_ratio: 0.2
   center_of_mass: {fileID: 1872755884}
   gyroscope: {fileID: 498686779}
-  barometer: {fileID: 0}
+  weather_station: {fileID: 1507514710}
   constant_prop_activation: 0
   FL_propeller: {fileID: 1836828994}
   FR_propeller: {fileID: 908998055}
@@ -946,12 +955,12 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 435379639}
-  - {fileID: 422069464}
-  - {fileID: 183259403}
   - {fileID: 1836828995}
   - {fileID: 908998056}
   - {fileID: 1579303796}
   - {fileID: 319962782}
+  - {fileID: 422069464}
+  - {fileID: 183259403}
   - {fileID: 1872755885}
   - {fileID: 498686780}
   - {fileID: 1507514711}
@@ -991,10 +1000,11 @@ MonoBehaviour:
   step: 0
   curr_force: 0
   max_force: 10
-  use_key: 44
-  drone: {fileID: 0}
+  use_key: 48
+  drone: {fileID: 2045085488}
   rotation_direction: 1
   RPM: 0
+  thrust_coefficient: 0.0724
   torque_coefficient: 0.3
   radius_inch: 9.4
   step_inch: 5.3
@@ -5883,10 +5893,11 @@ MonoBehaviour:
   step: 0
   curr_force: 0
   max_force: 10
-  use_key: 44
-  drone: {fileID: 0}
+  use_key: 48
+  drone: {fileID: 2045085488}
   rotation_direction: 1
   RPM: 0
+  thrust_coefficient: 0.0724
   torque_coefficient: 0.3
   radius_inch: 9.4
   step_inch: 5.3
@@ -6025,10 +6036,11 @@ MonoBehaviour:
   step: 0
   curr_force: 0
   max_force: 10
-  use_key: 44
-  drone: {fileID: 0}
+  use_key: 48
+  drone: {fileID: 2045085488}
   rotation_direction: 1
   RPM: 0
+  thrust_coefficient: 0.0724
   torque_coefficient: 0.3
   radius_inch: 9.4
   step_inch: 5.3
@@ -6067,9 +6079,10 @@ MonoBehaviour:
   curr_force: 0
   max_force: 10
   use_key: 111
-  drone: {fileID: 0}
+  drone: {fileID: 653091362}
   rotation_direction: 1
   RPM: 0
+  thrust_coefficient: 0.0724
   torque_coefficient: 0.3
   radius_inch: 9.4
   step_inch: 5.3
@@ -6147,7 +6160,7 @@ GameObject:
   - component: {fileID: 1148302145}
   - component: {fileID: 1148302146}
   m_Layer: 2
-  m_Name: Barometer
+  m_Name: Weather station
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6181,6 +6194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Altimeter
   max_distance: 100
+  ambientconditions: {fileID: 1311696575}
 --- !u!1 &1181816340
 GameObject:
   m_ObjectHideFlags: 0
@@ -6230,6 +6244,52 @@ MonoBehaviour:
   FR_force: 0
   BL_force: 0
   BR_force: 0
+--- !u!1 &1311696574
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1311696576}
+  - component: {fileID: 1311696575}
+  m_Layer: 0
+  m_Name: Ambient conditions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1311696575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311696574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efef51fbcf76d364bb3ab27dac8ae069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Ambientconditions
+  atmospheric_pressure: 101325
+  temperature: 15
+--- !u!4 &1311696576
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311696574}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1342444344
 GameObject:
   m_ObjectHideFlags: 0
@@ -6519,9 +6579,10 @@ MonoBehaviour:
   curr_force: 0
   max_force: 10
   use_key: 99
-  drone: {fileID: 0}
+  drone: {fileID: 1658372852}
   rotation_direction: 1
   RPM: 0
+  thrust_coefficient: 0.0724
   torque_coefficient: 0.3
   radius_inch: 9.4
   step_inch: 5.3
@@ -6673,7 +6734,7 @@ GameObject:
   - component: {fileID: 1507514711}
   - component: {fileID: 1507514710}
   m_Layer: 2
-  m_Name: Altimeter
+  m_Name: weather station
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6692,6 +6753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Altimeter
   max_distance: 100
+  ambientconditions: {fileID: 1311696575}
 --- !u!4 &1507514711
 Transform:
   m_ObjectHideFlags: 0
@@ -6742,9 +6804,10 @@ MonoBehaviour:
   curr_force: 0
   max_force: 10
   use_key: 109
-  drone: {fileID: 0}
+  drone: {fileID: 653091362}
   rotation_direction: 1
   RPM: 0
+  thrust_coefficient: 0.0724
   torque_coefficient: 0.3
   radius_inch: 9.4
   step_inch: 5.3
@@ -6989,7 +7052,7 @@ MonoBehaviour:
   tilt_ratio: 0.2
   center_of_mass: {fileID: 1639191449}
   gyroscope: {fileID: 2121039311}
-  barometer: {fileID: 1148302146}
+  weather_station: {fileID: 1148302146}
   constant_prop_activation: 0
   FL_propeller: {fileID: 547150046}
   FR_propeller: {fileID: 83342624}
@@ -7029,10 +7092,11 @@ MonoBehaviour:
   step: 0
   curr_force: 0
   max_force: 10
-  use_key: 44
-  drone: {fileID: 0}
+  use_key: 48
+  drone: {fileID: 2045085488}
   rotation_direction: 1
   RPM: 0
+  thrust_coefficient: 0.0724
   torque_coefficient: 0.3
   radius_inch: 9.4
   step_inch: 5.3
@@ -7062,7 +7126,7 @@ GameObject:
   - component: {fileID: 1712344445}
   - component: {fileID: 1712344446}
   m_Layer: 2
-  m_Name: Altimeter
+  m_Name: Weather station
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7096,6 +7160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Altimeter
   max_distance: 100
+  ambientconditions: {fileID: 1311696575}
 --- !u!1 &1719520928
 GameObject:
   m_ObjectHideFlags: 0
@@ -7190,9 +7255,10 @@ MonoBehaviour:
   curr_force: 0
   max_force: 10
   use_key: 122
-  drone: {fileID: 0}
+  drone: {fileID: 1658372852}
   rotation_direction: 1
   RPM: 0
+  thrust_coefficient: 0.0724
   torque_coefficient: 0.3
   radius_inch: 9.4
   step_inch: 5.3
@@ -7231,9 +7297,10 @@ MonoBehaviour:
   curr_force: 0
   max_force: 10
   use_key: 105
-  drone: {fileID: 0}
+  drone: {fileID: 653091362}
   rotation_direction: 1
   RPM: 0
+  thrust_coefficient: 0.0724
   torque_coefficient: 0.3
   radius_inch: 9.4
   step_inch: 5.3
@@ -7368,7 +7435,7 @@ MonoBehaviour:
   tilt_ratio: 0.2
   center_of_mass: {fileID: 1621504555}
   gyroscope: {fileID: 1719520930}
-  barometer: {fileID: 0}
+  weather_station: {fileID: 1712344446}
   constant_prop_activation: 0
   F_propeller: {fileID: 1665048441}
   FR_propeller: {fileID: 565046174}
@@ -7516,3 +7583,4 @@ SceneRoots:
   - {fileID: 1342444348}
   - {fileID: 1094177618}
   - {fileID: 766231029}
+  - {fileID: 1311696576}
