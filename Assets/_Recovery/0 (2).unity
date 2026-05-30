@@ -164,8 +164,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Liftcomponent
   angular_speed: 0
-  radius: 0
-  step: 0
   curr_force: 0
   max_force: 10
   use_key: 101
@@ -174,8 +172,7 @@ MonoBehaviour:
   RPM: 0
   thrust_coefficient: 0.0724
   torque_coefficient: 0.3
-  radius_inch: 9.4
-  step_inch: 5.3
+  radius: 0
 --- !u!1 &183259401
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,8 +203,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
   angular_speed: 0
-  radius: 0
-  step: 0
   curr_force: 0
   max_force: 10
   use_key: 108
@@ -216,8 +211,7 @@ MonoBehaviour:
   RPM: 0
   thrust_coefficient: 0.0724
   torque_coefficient: 0.3
-  radius_inch: 9.4
-  step_inch: 5.3
+  radius: 0
 --- !u!4 &183259403
 Transform:
   m_ObjectHideFlags: 0
@@ -263,8 +257,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
   angular_speed: 0
-  radius: 0
-  step: 0
   curr_force: 0
   max_force: 10
   use_key: 48
@@ -273,8 +265,7 @@ MonoBehaviour:
   RPM: 0
   thrust_coefficient: 0.0724
   torque_coefficient: 0.3
-  radius_inch: 9.4
-  step_inch: 5.3
+  radius: 0
 --- !u!4 &288568171
 Transform:
   m_ObjectHideFlags: 0
@@ -320,8 +311,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
   angular_speed: 0
-  radius: 0
-  step: 0
   curr_force: 0
   max_force: 10
   use_key: 44
@@ -330,8 +319,7 @@ MonoBehaviour:
   RPM: 0
   thrust_coefficient: 0.0724
   torque_coefficient: 0.3
-  radius_inch: 9.4
-  step_inch: 5.3
+  radius: 0
 --- !u!4 &319962782
 Transform:
   m_ObjectHideFlags: 0
@@ -377,8 +365,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
   angular_speed: 0
-  radius: 0
-  step: 0
   curr_force: 0
   max_force: 10
   use_key: 48
@@ -387,8 +373,7 @@ MonoBehaviour:
   RPM: 0
   thrust_coefficient: 0.0724
   torque_coefficient: 0.3
-  radius_inch: 9.4
-  step_inch: 5.3
+  radius: 0
 --- !u!4 &328870259
 Transform:
   m_ObjectHideFlags: 0
@@ -434,8 +419,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
   angular_speed: 0
-  radius: 0
-  step: 0
   curr_force: 0
   max_force: 10
   use_key: 106
@@ -444,8 +427,7 @@ MonoBehaviour:
   RPM: 0
   thrust_coefficient: 0.0724
   torque_coefficient: 0.3
-  radius_inch: 9.4
-  step_inch: 5.3
+  radius: 0
 --- !u!4 &422069464
 Transform:
   m_ObjectHideFlags: 0
@@ -601,8 +583,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
   angular_speed: 0
-  radius: 0
-  step: 0
   curr_force: 0
   max_force: 10
   use_key: 113
@@ -611,8 +591,7 @@ MonoBehaviour:
   RPM: 0
   thrust_coefficient: 0.0724
   torque_coefficient: 0.3
-  radius_inch: 9.4
-  step_inch: 5.3
+  radius: 0
 --- !u!1 &553848545
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,8 +622,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
   angular_speed: 0
-  radius: 0
-  step: 0
   curr_force: 0
   max_force: 10
   use_key: 48
@@ -653,8 +630,7 @@ MonoBehaviour:
   RPM: 0
   thrust_coefficient: 0.0724
   torque_coefficient: 0.3
-  radius_inch: 9.4
-  step_inch: 5.3
+  radius: 0
 --- !u!4 &553848547
 Transform:
   m_ObjectHideFlags: 0
@@ -764,8 +740,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
   angular_speed: 0
-  radius: 0
-  step: 0
   curr_force: 0
   max_force: 10
   use_key: 48
@@ -774,8 +748,7 @@ MonoBehaviour:
   RPM: 0
   thrust_coefficient: 0.0724
   torque_coefficient: 0.3
-  radius_inch: 9.4
-  step_inch: 5.3
+  radius: 0
 --- !u!4 &565046175
 Transform:
   m_ObjectHideFlags: 0
@@ -950,7 +923,7 @@ Transform:
   m_GameObject: {fileID: 653091358}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 1, z: 1}
+  m_LocalPosition: {x: -4.69, y: 1, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -996,8 +969,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
   angular_speed: 0
-  radius: 0
-  step: 0
   curr_force: 0
   max_force: 10
   use_key: 48
@@ -1006,8 +977,7 @@ MonoBehaviour:
   RPM: 0
   thrust_coefficient: 0.0724
   torque_coefficient: 0.3
-  radius_inch: 9.4
-  step_inch: 5.3
+  radius: 0
 --- !u!4 &687756202
 Transform:
   m_ObjectHideFlags: 0
@@ -5889,8 +5859,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
   angular_speed: 0
-  radius: 0
-  step: 0
   curr_force: 0
   max_force: 10
   use_key: 48
@@ -5899,8 +5867,7 @@ MonoBehaviour:
   RPM: 0
   thrust_coefficient: 0.0724
   torque_coefficient: 0.3
-  radius_inch: 9.4
-  step_inch: 5.3
+  radius: 0
 --- !u!4 &757370831
 Transform:
   m_ObjectHideFlags: 0
@@ -6032,8 +5999,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
   angular_speed: 0
-  radius: 0
-  step: 0
   curr_force: 0
   max_force: 10
   use_key: 48
@@ -6042,8 +6007,7 @@ MonoBehaviour:
   RPM: 0
   thrust_coefficient: 0.0724
   torque_coefficient: 0.3
-  radius_inch: 9.4
-  step_inch: 5.3
+  radius: 0
 --- !u!1 &908998054
 GameObject:
   m_ObjectHideFlags: 0
@@ -6074,8 +6038,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Liftcomponent
   angular_speed: 0
-  radius: 0
-  step: 0
   curr_force: 0
   max_force: 10
   use_key: 111
@@ -6084,8 +6046,7 @@ MonoBehaviour:
   RPM: 0
   thrust_coefficient: 0.0724
   torque_coefficient: 0.3
-  radius_inch: 9.4
-  step_inch: 5.3
+  radius: 0
 --- !u!4 &908998056
 Transform:
   m_ObjectHideFlags: 0
@@ -6574,18 +6535,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
   angular_speed: 0
-  radius: 0
-  step: 0
   curr_force: 0
   max_force: 10
   use_key: 99
   drone: {fileID: 1658372852}
-  rotation_direction: 1
+  rotation_direction: -1
   RPM: 0
   thrust_coefficient: 0.0724
   torque_coefficient: 0.3
-  radius_inch: 9.4
-  step_inch: 5.3
+  radius: 0
 --- !u!1 &1405194265
 GameObject:
   m_ObjectHideFlags: 0
@@ -6799,8 +6757,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
   angular_speed: 0
-  radius: 0
-  step: 0
   curr_force: 0
   max_force: 10
   use_key: 109
@@ -6809,8 +6765,7 @@ MonoBehaviour:
   RPM: 0
   thrust_coefficient: 0.0724
   torque_coefficient: 0.3
-  radius_inch: 9.4
-  step_inch: 5.3
+  radius: 0
 --- !u!4 &1579303796
 Transform:
   m_ObjectHideFlags: 0
@@ -7003,8 +6958,8 @@ Transform:
   - {fileID: 1181816341}
   - {fileID: 547150045}
   - {fileID: 83342623}
-  - {fileID: 1790855537}
   - {fileID: 1355920847}
+  - {fileID: 1790855537}
   - {fileID: 1639191450}
   - {fileID: 2121039310}
   - {fileID: 1148302145}
@@ -7088,8 +7043,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
   angular_speed: 0
-  radius: 0
-  step: 0
   curr_force: 0
   max_force: 10
   use_key: 48
@@ -7098,8 +7051,7 @@ MonoBehaviour:
   RPM: 0
   thrust_coefficient: 0.0724
   torque_coefficient: 0.3
-  radius_inch: 9.4
-  step_inch: 5.3
+  radius: 0
 --- !u!4 &1665048442
 Transform:
   m_ObjectHideFlags: 0
@@ -7250,8 +7202,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
   angular_speed: 0
-  radius: 0
-  step: 0
   curr_force: 0
   max_force: 10
   use_key: 122
@@ -7260,8 +7210,7 @@ MonoBehaviour:
   RPM: 0
   thrust_coefficient: 0.0724
   torque_coefficient: 0.3
-  radius_inch: 9.4
-  step_inch: 5.3
+  radius: 0
 --- !u!1 &1836828993
 GameObject:
   m_ObjectHideFlags: 0
@@ -7292,8 +7241,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
   angular_speed: 0
-  radius: 0
-  step: 0
   curr_force: 0
   max_force: 10
   use_key: 105
@@ -7302,8 +7249,7 @@ MonoBehaviour:
   RPM: 0
   thrust_coefficient: 0.0724
   torque_coefficient: 0.3
-  radius_inch: 9.4
-  step_inch: 5.3
+  radius: 0
 --- !u!4 &1836828995
 Transform:
   m_ObjectHideFlags: 0
@@ -7511,7 +7457,7 @@ Transform:
   m_GameObject: {fileID: 2045085485}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 6.47, y: 1, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

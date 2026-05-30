@@ -27,7 +27,6 @@ public abstract class Drone : MonoBehaviour
     }
     protected virtual void Start()
     {
-        stasis_force = FindStasisForce(propellers.Count, propellers["FL"].max_force, rb.mass);//, Mathf.Deg2Rad * Vector3.Angle(Vector3.up, transform.up));
         Debug.Log("prop count: " + propellers.Count + " max_force: " + propellers["FL"].max_force + " mass: " + rb.mass+"\n" + "stasis force: " + stasis_force);
     }
     protected void Update()
@@ -41,18 +40,41 @@ public abstract class Drone : MonoBehaviour
     }
     protected void FixedUpdate()
     {
+        stasis_force = FindStasisForce(propellers.Count, propellers["FL"].max_force, rb.mass, gyroscope.GetReading());
         ManualSteering();
         ConstantPropActivation(constant_prop_activation);
         if(vert_stabilization)VerticalStabilization(target_v_stab_height);
     }
-    protected float FindStasisForce(int n_propellers, float max_propeller_force, float drone_mass)//, float tilt)
+    protected float FindStasisForce(int propellerCount, float maxForce, float mass, Vector3 gyroscopeAngles)
     {
-        //float res = drone_mass * Physics.gravity.magnitude / n_propellers / (float)Math.Cos(tilt);
-        float res = drone_mass * Physics.gravity.magnitude / n_propellers;
+        // 1. Calculate gravity and the weight that needs to be lifted
+        float gravity = Mathf.Abs(Physics.gravity.y);
+        float requiredLift = mass * gravity;
 
-        if(res > max_propeller_force) Debug.LogError("Нелетающий дрон, сила стазиса больше максимальной!");
-        return res;
-    } 
+        // 2. Convert gyroscope degrees to radians for Unity's math functions
+        float pitchRad = gyroscopeAngles.x * Mathf.Deg2Rad;
+        float rollRad = gyroscopeAngles.z * Mathf.Deg2Rad;
+
+        // 3. Calculate how much vertical lift is preserved at this specific tilt
+        float cosPitch = Mathf.Cos(pitchRad);
+        float cosRoll = Mathf.Cos(rollRad);
+        float verticalEfficiency = cosPitch * cosRoll;
+
+        // 4. Prevent division by zero if the drone is tilted 90 degrees or upside down
+        if (verticalEfficiency <= 0.001f)
+        {
+            return maxForce;
+        }
+
+        // 5. Calculate total counter-gravity force and divide it among the propellers
+        float totalForceNeeded = requiredLift / verticalEfficiency;
+        float forcePerPropeller = totalForceNeeded / propellerCount;
+
+        // 6. Clamp the final value to individual motor limits
+        return Mathf.Clamp(forcePerPropeller, 0f, maxForce);
+    }
+
+
     public void VerticalStabilization(float target_height)
     {
         Debug.Log(name + " target height: " + target_height);
