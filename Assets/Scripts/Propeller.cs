@@ -13,7 +13,7 @@ public class Propeller : MonoBehaviour
     [SerializeField] public float curr_force;
     [SerializeField] public float max_force = 5f;
     [SerializeField] KeyCode use_key;
-    [SerializeField] Drone drone;
+    /*[SerializeField] */Drone drone;
 
     [Header("Physical characteristics\n(default is DJI MAVIC 3 9453F low-noise) and rough estimations")]
     [SerializeField] public RotDirection rotation_direction = RotDirection.CCW;
@@ -23,6 +23,14 @@ public class Propeller : MonoBehaviour
     [SerializeField] public float radius = 0.1194f;
     void Awake()
     { 
+        if(transform.parent != null)
+        {
+        drone = transform.parent.GetComponent<Drone>();
+        }
+        else
+        {
+            Debug.Log(this + " is parentless");
+        }
         rb = drone.GetComponent<Rigidbody>();
     }
 
