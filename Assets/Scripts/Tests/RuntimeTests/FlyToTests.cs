@@ -10,7 +10,6 @@ using System;
 public class FlyToTests
 {
     private readonly static string[] DroneTypes = new string[] { "Quadrocopter", "Octocopter", "Hexacopter" };
-    readonly float recovery_time = 8f;
     [UnitySetUp]
     public IEnumerator SetUp()
     {
@@ -22,13 +21,11 @@ public class FlyToTests
     {
         yield return FlyTowardsTest(drone_name, target);
     }
-
     [UnityTest]
     public IEnumerator Drone_Stops_On_Target([ValueSource(nameof(DroneTypes))] string drone_name, [ValueSource(nameof(SetTargets))] Vector3 target)
     {
         yield return FlyTowardsAndStopAtTest(drone_name, target);
     }
-
     public static IEnumerable<Vector3> SetTargets()
     {   
         return MakeTargets(Mathf.PI/6f, 10f, Vector3.up * 3);

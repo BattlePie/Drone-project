@@ -46,12 +46,12 @@ namespace Core
         }
         protected void FixedUpdate()
         {
-            stasis_force = FindStasisForce(propellers.Count, propellers["FL"].max_force, rb.mass, gyroscope.GetReading());
+            stasis_force = FindStasisForce(propellers.Count, rb.mass, gyroscope.GetReading());
             ManualSteering();
             if (constant_prop_activation) ConstantPropActivation(constant_prop_activation_value);
             if (vert_stabilization) VerticalStabilization(target_v_stab_height);
         }
-        protected float FindStasisForce(int propellerCount, float maxForce, float mass, Vector3 gyroscopeAngles)
+        protected static float FindStasisForce(int propellerCount, float mass, Vector3 gyroscopeAngles)
         {
             // 1. Calculate gravity and the weight that needs to be lifted
             float gravity = Mathf.Abs(Physics.gravity.y);
@@ -69,15 +69,14 @@ namespace Core
             // 4. Prevent division by zero if the drone is tilted 90 degrees or upside down
             if (verticalEfficiency <= 0.001f)
             {
-                return maxForce;
+                return float.PositiveInfinity;
             }
 
             // 5. Calculate total counter-gravity force and divide it among the propellers
             float totalForceNeeded = requiredLift / verticalEfficiency;
             float forcePerPropeller = totalForceNeeded / propellerCount;
 
-            // 6. Clamp the final value to individual motor limits
-            return Mathf.Clamp(forcePerPropeller, 0f, maxForce);
+            return Mathf.Max(forcePerPropeller, 0f);
         }
         public void ToggleVerticalStabilization(bool state, float target_height = -10f)
         {
