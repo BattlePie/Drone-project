@@ -4,12 +4,12 @@ using UnityEngine;
 public class WeatherStation : MonoBehaviour
 {
     [SerializeField] public float max_distance = 100f;
-    [SerializeField] public Ambientconditions ambient_conditions;
-    public void Start()
+    [SerializeField] public AmbientConditions ambient_conditions;
+    public void Awake()
     {
         if(GameObject.Find("Ambient Conditions"))
         {
-            ambient_conditions = GameObject.Find("Ambient Conditions").GetComponent<Ambientconditions>();
+            ambient_conditions = GameObject.Find("Ambient Conditions").GetComponent<AmbientConditions>();
         }
         else 
         {

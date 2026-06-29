@@ -38,7 +38,7 @@ namespace Core
         protected void Update()
         {
             weather_station.GetAirDensity();
-            if (Input.GetKeyDown(KeyCode.Comma)) ToggleVerticalStabilization(true);
+            if (Input.GetKeyDown(KeyCode.Comma)) ToggleVerticalStabilization(true, weather_station.GetHeight());
             if (Input.GetKeyDown(KeyCode.Period)) ToggleVerticalStabilization(false);
 
             //if(Input.GetKeyDown(KeyCode.Semicolon)) {flight_target = transform.position;  targeted_flight = true;}
@@ -79,13 +79,13 @@ namespace Core
             // 6. Clamp the final value to individual motor limits
             return Mathf.Clamp(forcePerPropeller, 0f, maxForce);
         }
-        public void ToggleVerticalStabilization(bool state)
+        public void ToggleVerticalStabilization(bool state, float target_height = -10f)
         {
             switch (state)
             {
                 case true:
                 {
-                    target_v_stab_height = weather_station.GetHeight(); 
+                    target_v_stab_height = target_height; 
                     vert_stabilization = true;
                     break;
                 }
