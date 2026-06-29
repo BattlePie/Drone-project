@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+using Core;
 public class Dirtybuttons : MonoBehaviour
 {
     [SerializeField] Drone quadrocopter;

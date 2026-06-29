@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+using Core;
 public class Octocopter : Drone
 {
     [SerializeField] public Propeller F_propeller;

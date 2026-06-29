@@ -1,23 +1,21 @@
 using System;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Rendering;
-
+using Core;
 public class Propeller : MonoBehaviour
 {
     public enum RotDirection{CW = -1, CCW = 1};
     Rigidbody rb;
+    Drone drone;
     public float angular_speed;
 
     [Header("Technical variables and relations")]
     [SerializeField] public float curr_force;
     [SerializeField] public float max_force = 5f;
     [SerializeField] KeyCode use_key;
-    /*[SerializeField] */Drone drone;
 
     [Header("Physical characteristics\n(default is DJI MAVIC 3 9453F low-noise) and rough estimations")]
     [SerializeField] public RotDirection rotation_direction = RotDirection.CCW;
-    [SerializeField] public float RPM;//NEXT, RPM DOES NOT CHANGE
+    [SerializeField] public float RPM;
     [SerializeField] public float thrust_coefficient = 0.115f;
     [SerializeField] public float torque_coefficient = 0.0065f;
     [SerializeField] public float radius = 0.1194f;
@@ -57,8 +55,8 @@ public class Propeller : MonoBehaviour
         if (float.IsNaN(transform.up.x) || float.IsNaN(transform.up.y) || float.IsNaN(transform.up.z))                  Debug.LogError("errror in transform.up");
         if (float.IsNaN(transform.position.x) ||float.IsNaN(transform.position.y) || float.IsNaN(transform.position.z)) Debug.LogError("errror in position");
 
-        curr_force = Mathf.Clamp(i_curr_force, 0, max_force);
-        RPM = 60 * (float)math.sqrt(curr_force / (thrust_coefficient * drone.weather_station.GetAirDensity() * math.pow(radius * 2, 4)));
+        curr_force = Math.Clamp(i_curr_force, 0, max_force);
+        RPM = 60f * (float)Math.Sqrt(curr_force / (thrust_coefficient * drone.weather_station.GetAirDensity() * Math.Pow(radius * 2, 4)));
         rb.AddForceAtPosition(curr_force * transform.up, transform.position, ForceMode.Force);
     }
     public void SetPropellerForceFromRatio(float ratio)
@@ -79,7 +77,7 @@ public class Propeller : MonoBehaviour
  public float GetReactiveTorque(float thrust)
     {
         // Aerodynamic relationship: Torque = Thrust * Radius * (Cq / Ct)
-        float torqueMagnitude = thrust * (float)radius * (torque_coefficient / thrust_coefficient);
+        float torqueMagnitude = thrust * radius * (torque_coefficient / thrust_coefficient);
         
         return torqueMagnitude;
     }
