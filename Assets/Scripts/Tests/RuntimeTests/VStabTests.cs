@@ -8,7 +8,7 @@ using Core;
 
 public class VerticalStabilizationTests : MonoBehaviour
 {
-    private readonly static string[] DronePaths = new string[] { "Prefabs/Quadrocopter", "Prefabs/Octocopter", "Prefabs/Hexacopter" };
+    private readonly static string[] DronePaths = { "Prefabs/Quadrocopter", "Prefabs/Octocopter", "Prefabs/Hexacopter" };
     readonly float recovery_time = 8f;
     [UnityTest]
     public IEnumerator VertStabilization_WorksStatically([ValueSource(nameof(DronePaths))] string drone_prefab_path)
@@ -58,7 +58,7 @@ float current_height = drone.transform.position.y;
     public IEnumerator WhileFlyingUp_DroneVertStabilization_Works(string drone_prefab_path)
     {
         //ARRANGE
-        SceneManager.LoadScene("VStabTesting");
+        SceneManager.LoadScene("Testing Scene");
         yield return null;
         GameObject drone_instance = Instantiate(Resources.Load<GameObject>(drone_prefab_path), new Vector3(0,3,0), Quaternion.identity);
         Drone drone = drone_instance.GetComponent<Drone>();
@@ -79,7 +79,7 @@ float current_height = drone.transform.position.y;
         bool isVelocityCorrect = System.Math.Abs(rb.linearVelocity.y) <= 0.5f; 
         
         Assert.IsTrue(isHeightCorrect && isVelocityCorrect, 
-         $"Drone Stabilization Failed!\nExpected height: {expected_height}±0.5 (Got: {current_height} Delta: {expected_height - current_height}),\nExpected Velocity.Y: 0±0.05 (Got: {rb.linearVelocity.y})");
+        $"Drone Stabilization Failed!\nExpected height: {expected_height}±0.5 (Got: {current_height} Delta: {expected_height - current_height}),\nExpected Velocity.Y: 0±0.05 (Got: {rb.linearVelocity.y})");
 
     }
 }
