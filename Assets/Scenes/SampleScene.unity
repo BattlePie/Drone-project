@@ -11529,7 +11529,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Octocopter
       objectReference: {fileID: 0}
-<<<<<<< HEAD
     - target: {fileID: 1720992384832227790, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
       propertyPath: use_key.m_Name
       value: Use_key
@@ -11557,11 +11556,6 @@ PrefabInstance:
     - target: {fileID: 3115270486246402490, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
       propertyPath: use_key.m_Name
       value: Use_key
-=======
-    - target: {fileID: 1091221594854264820, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
-      propertyPath: m_IsActive
-      value: 0
->>>>>>> crash-course
       objectReference: {fileID: 0}
     - target: {fileID: 3586775954811729364, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
       propertyPath: m_LocalPosition.x
