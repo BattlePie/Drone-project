@@ -1,4 +1,4 @@
-using System.Collections;
+using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -12,11 +12,7 @@ public class StasisForceTests
         {
             return FindStasisForce(propeller_count, drone_mass, drone_tilt);
         }
-        protected override void Controller(Vector3 euler_angles, float throttle)
-        {
-            throw new System.NotImplementedException();
-        }
-        protected override void ManualSteering()
+        protected override Dictionary<string, float> SetDroneRotation(Vector3 euler_angles)
         {
             throw new System.NotImplementedException();
         }
@@ -34,9 +30,9 @@ public class StasisForceTests
 
    public void StasisForce_CalculatesCorrectly(int propeller_count, float drone_weight, float drone_roll, float drone_pitch)
 {
-    float target_force = float.PositiveInfinity;
+    float target_force;
     
-    Vector3 testAngles = new Vector3(drone_pitch, 0, drone_roll);
+    Vector3 testAngles = new(drone_pitch, 0, drone_roll);
 
     float cosRoll = Mathf.Cos(drone_roll * Mathf.Deg2Rad);
     float cosPitch = Mathf.Cos(drone_pitch * Mathf.Deg2Rad);

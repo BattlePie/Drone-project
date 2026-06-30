@@ -91,8 +91,16 @@ MonoBehaviour:
   angular_speed: 0
   curr_force: 0
   max_force: 10
-  use_key: 105
-  rotation_direction: 1
+  use_key:
+    m_Name: Use_key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: b8153b8f-9782-49e6-8ce2-e6ddb80a5fa4
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  rotation_direction: -1
   RPM: 0
   thrust_coefficient: 0.115
   torque_coefficient: 0.0065
@@ -144,8 +152,16 @@ MonoBehaviour:
   angular_speed: 0
   curr_force: 0
   max_force: 10
-  use_key: 108
-  rotation_direction: 1
+  use_key:
+    m_Name: Use_key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 7a610db7-b035-4e06-b4a1-061316466ad1
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  rotation_direction: -1
   RPM: 0
   thrust_coefficient: 0.115
   torque_coefficient: 0.0065
@@ -243,8 +259,16 @@ MonoBehaviour:
   angular_speed: 0
   curr_force: 0
   max_force: 10
-  use_key: 111
-  rotation_direction: -1
+  use_key:
+    m_Name: Use_key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 3c37bc8f-6136-4668-81f8-c86bfb737dab
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  rotation_direction: 1
   RPM: 0
   thrust_coefficient: 0.115
   torque_coefficient: 0.0065
@@ -327,8 +351,16 @@ MonoBehaviour:
   angular_speed: 0
   curr_force: 0
   max_force: 10
-  use_key: 106
-  rotation_direction: -1
+  use_key:
+    m_Name: Use_key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 0a2bc308-7824-48ce-ad96-15ef84d5d246
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  rotation_direction: 1
   RPM: 0
   thrust_coefficient: 0.115
   torque_coefficient: 0.0065
@@ -380,8 +412,16 @@ MonoBehaviour:
   angular_speed: 0
   curr_force: 0
   max_force: 10
-  use_key: 44
-  rotation_direction: -1
+  use_key:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 40d7e05f-48a3-46f0-a488-48960366cfcb
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  rotation_direction: 1
   RPM: 0
   thrust_coefficient: 0.115
   torque_coefficient: 0.0065
@@ -433,8 +473,16 @@ MonoBehaviour:
   angular_speed: 0
   curr_force: 0
   max_force: 10
-  use_key: 109
-  rotation_direction: 1
+  use_key:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 3276beab-62ac-49b5-bf3d-994e3635021e
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  rotation_direction: -1
   RPM: 0
   thrust_coefficient: 0.115
   torque_coefficient: 0.0065
@@ -557,7 +605,6 @@ MonoBehaviour:
   center_of_mass: {fileID: 3068426588307208749}
   gyroscope: {fileID: 6126535692633438342}
   weather_station: {fileID: 4928786972387752929}
-  constant_prop_activation: 0
   FL_propeller: {fileID: 2137749334748427012}
   FR_propeller: {fileID: 5369354389523295896}
   BL_propeller: {fileID: 7024057844936462003}

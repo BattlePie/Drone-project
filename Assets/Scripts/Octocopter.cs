@@ -28,57 +28,33 @@ public class Octocopter : Drone
 
         base.Start(); 
     }
-    protected override void Controller(Vector3 euler_angles, float throttle)
+    protected override Dictionary<string,float> SetDroneRotation(Vector3 euler_angles)
     {
-        throw new System.NotImplementedException();
-    }
-    protected override void ManualSteering()
-    {
-        {
-        if (Keyboard.current.wKey.isPressed)
-        {
-            propellers["F"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["FR"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["R"].SetPropellerForceFromRatio(0);
-            propellers["BR"].SetPropellerForceFromRatio(1);
-            propellers["B"].SetPropellerForceFromRatio(1);
-            propellers["BL"].SetPropellerForceFromRatio(1);
-            propellers["L"].SetPropellerForceFromRatio(0);
-            propellers["FL"].SetPropellerForceFromRatio(tilt_ratio);
-        }
-        if (Keyboard.current.aKey.isPressed)
-        {
-            propellers["F"].SetPropellerForceFromRatio(0);
-            propellers["FR"].SetPropellerForceFromRatio(1);
-            propellers["R"].SetPropellerForceFromRatio(1);
-            propellers["BR"].SetPropellerForceFromRatio(1);
-            propellers["B"].SetPropellerForceFromRatio(0);
-            propellers["BL"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["L"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["FL"].SetPropellerForceFromRatio(tilt_ratio);
-        }
-        if (Keyboard.current.sKey.isPressed)
-        {
-            propellers["F"].SetPropellerForceFromRatio(1);
-            propellers["FR"].SetPropellerForceFromRatio(1);
-            propellers["R"].SetPropellerForceFromRatio(0);
-            propellers["BR"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["B"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["BL"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["L"].SetPropellerForceFromRatio(0);
-            propellers["FL"].SetPropellerForceFromRatio(1);
-        }
-        if (Keyboard.current.dKey.isPressed)
-        {
-            propellers["F"].SetPropellerForceFromRatio(0);
-            propellers["FR"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["R"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["BR"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["B"].SetPropellerForceFromRatio(0);
-            propellers["BL"].SetPropellerForceFromRatio(1);
-            propellers["L"].SetPropellerForceFromRatio(1);
-            propellers["FL"].SetPropellerForceFromRatio(1);
-        }
-        }
+        float roll = euler_angles.x;
+        float yaw = euler_angles.y;
+        float pitch = euler_angles.z;
+        float hover_force = FindStasisForce(propellers.Count, rb.mass, gyroscope.GetReading());
+        const float DIAG = 0.7071f; // Pre-calculated sin/cos of 45 degrees
+
+        float f_throttle = hover_force + pitch - yaw;                            // M1 (Front)
+        float fr_throttle = hover_force - (DIAG * roll) + (DIAG * pitch) + yaw;  // M2 (Front-Right)
+        float r_throttle = hover_force - roll - yaw;                             // M3 (Right)
+        float br_throttle = hover_force - (DIAG * roll) - (DIAG * pitch) + yaw;  // M4 (Rear-Right)
+        float b_throttle = hover_force - pitch - yaw;                            // M5 (Rear)
+        float bl_throttle = hover_force + (DIAG * roll) - (DIAG * pitch) + yaw;  // M6 (Rear-Left)
+        float l_throttle = hover_force + roll - yaw;                             // M7 (Left)
+        float fl_throttle = hover_force + (DIAG * roll) + (DIAG * pitch) + yaw;  // M8 (Front-Left)
+
+        return new (){
+        ["FR"] = fr_throttle,
+        ["BL"] = bl_throttle,
+        ["FL"] = fl_throttle,
+        ["BR"] = br_throttle,
+        ["L"] = l_throttle,
+        ["R"] = r_throttle,
+        ["F"] = f_throttle,
+        ["B"] = b_throttle
+        };      
+
     }
 }

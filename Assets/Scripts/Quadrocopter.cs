@@ -5,11 +5,10 @@ using UnityEngine.InputSystem;
 using Core;
 public class Quadrocopter : Drone
 {
-    [SerializeField] public Propeller FL_propeller;
-    [SerializeField] public Propeller FR_propeller;
-    [SerializeField] public Propeller BL_propeller;
-    [SerializeField] public Propeller BR_propeller;
-
+    public Propeller FL_propeller;
+    public Propeller FR_propeller;
+    public Propeller BL_propeller;
+    public Propeller BR_propeller;
     protected override void Start()
     {
         propellers = new Dictionary<string, Propeller> {
@@ -21,52 +20,24 @@ public class Quadrocopter : Drone
         base.Start();       
     }
 
-    protected override void Controller(UnityEngine.Vector3 euler_angles, float throttle)
+    protected override Dictionary<string,float> SetDroneRotation(Vector3 euler_angles)
     {
-        float fl_throttle = throttle - euler_angles.x + euler_angles.y + euler_angles.z;
+        float roll = euler_angles.x;
+        float yaw = euler_angles.y;
+        float pitch = euler_angles.z;
+        float hover_force = FindStasisForce(propellers.Count, rb.mass, gyroscope.GetReading());
 
-        propellers["FL"].SetPropellerForce(throttle - euler_angles.x + euler_angles.y + euler_angles.z);
-
-
-        //Assumes regular quadrocopter propeller positions
+        float fr_throttle = hover_force - roll + pitch + yaw;
+        float bl_throttle = hover_force + roll - pitch + yaw;   
+        float fl_throttle = hover_force + roll + pitch - yaw;
+        float br_throttle = hover_force - roll - pitch - yaw;
         
+        return new (){
+        ["FR"] = fr_throttle,
+        ["BL"] = bl_throttle,
+        ["FL"] = fl_throttle,
+        ["BR"] = br_throttle
+        };      
 
-    }
-
-    protected override void ManualSteering()
-    {
-        {
-        if (Keyboard.current.wKey.isPressed)
-        {
-
-            propellers["BL"].SetPropellerForceFromRatio(1);
-            propellers["BR"].SetPropellerForceFromRatio(1);
-            propellers["FL"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["FR"].SetPropellerForceFromRatio(tilt_ratio);
-
-        }
-        if (Keyboard.current.aKey.isPressed)
-        {
-            propellers["BL"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["BR"].SetPropellerForceFromRatio(1);
-            propellers["FL"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["FR"].SetPropellerForceFromRatio(1);
-        }
-        if (Keyboard.current.sKey.isPressed)
-        {
-            propellers["BL"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["BR"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["FL"].SetPropellerForceFromRatio(1);
-            propellers["FR"].SetPropellerForceFromRatio(1);
-
-        }
-        if (Keyboard.current.dKey.isPressed)
-        {
-            propellers["BL"].SetPropellerForceFromRatio(1);
-            propellers["BR"].SetPropellerForceFromRatio(tilt_ratio);
-            propellers["FL"].SetPropellerForceFromRatio(1);
-            propellers["FR"].SetPropellerForceFromRatio(tilt_ratio);
-        }
-        }
     }
 }
