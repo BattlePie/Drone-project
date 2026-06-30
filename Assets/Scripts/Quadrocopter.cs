@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
 using Core;
 public class Quadrocopter : Drone
@@ -19,10 +20,23 @@ public class Quadrocopter : Drone
 
         base.Start();       
     }
-override protected void ManualSteering()
+
+    protected override void Controller(UnityEngine.Vector3 euler_angles, float throttle)
+    {
+        float fl_throttle = throttle - euler_angles.x + euler_angles.y + euler_angles.z;
+
+        propellers["FL"].SetPropellerForce(throttle - euler_angles.x + euler_angles.y + euler_angles.z);
+
+
+        //Assumes regular quadrocopter propeller positions
+        
+
+    }
+
+    protected override void ManualSteering()
     {
         {
-        if (Input.GetKey(KeyCode.W))
+        if (Keyboard.current.wKey.isPressed)
         {
 
             propellers["BL"].SetPropellerForceFromRatio(1);
@@ -31,14 +45,14 @@ override protected void ManualSteering()
             propellers["FR"].SetPropellerForceFromRatio(tilt_ratio);
 
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Keyboard.current.aKey.isPressed)
         {
             propellers["BL"].SetPropellerForceFromRatio(tilt_ratio);
             propellers["BR"].SetPropellerForceFromRatio(1);
             propellers["FL"].SetPropellerForceFromRatio(tilt_ratio);
             propellers["FR"].SetPropellerForceFromRatio(1);
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Keyboard.current.sKey.isPressed)
         {
             propellers["BL"].SetPropellerForceFromRatio(tilt_ratio);
             propellers["BR"].SetPropellerForceFromRatio(tilt_ratio);
@@ -46,7 +60,7 @@ override protected void ManualSteering()
             propellers["FR"].SetPropellerForceFromRatio(1);
 
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Keyboard.current.dKey.isPressed)
         {
             propellers["BL"].SetPropellerForceFromRatio(1);
             propellers["BR"].SetPropellerForceFromRatio(tilt_ratio);

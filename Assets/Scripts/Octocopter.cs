@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
 using Core;
 public class Octocopter : Drone
@@ -27,10 +28,14 @@ public class Octocopter : Drone
 
         base.Start(); 
     }
+    protected override void Controller(Vector3 euler_angles, float throttle)
+    {
+        throw new System.NotImplementedException();
+    }
     protected override void ManualSteering()
     {
         {
-        if (Input.GetKey(KeyCode.W))
+        if (Keyboard.current.wKey.isPressed)
         {
             propellers["F"].SetPropellerForceFromRatio(tilt_ratio);
             propellers["FR"].SetPropellerForceFromRatio(tilt_ratio);
@@ -41,7 +46,7 @@ public class Octocopter : Drone
             propellers["L"].SetPropellerForceFromRatio(0);
             propellers["FL"].SetPropellerForceFromRatio(tilt_ratio);
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Keyboard.current.aKey.isPressed)
         {
             propellers["F"].SetPropellerForceFromRatio(0);
             propellers["FR"].SetPropellerForceFromRatio(1);
@@ -52,7 +57,7 @@ public class Octocopter : Drone
             propellers["L"].SetPropellerForceFromRatio(tilt_ratio);
             propellers["FL"].SetPropellerForceFromRatio(tilt_ratio);
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Keyboard.current.sKey.isPressed)
         {
             propellers["F"].SetPropellerForceFromRatio(1);
             propellers["FR"].SetPropellerForceFromRatio(1);
@@ -63,7 +68,7 @@ public class Octocopter : Drone
             propellers["L"].SetPropellerForceFromRatio(0);
             propellers["FL"].SetPropellerForceFromRatio(1);
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Keyboard.current.dKey.isPressed)
         {
             propellers["F"].SetPropellerForceFromRatio(0);
             propellers["FR"].SetPropellerForceFromRatio(tilt_ratio);

@@ -5732,6 +5732,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Octocopter
       objectReference: {fileID: 0}
+    - target: {fileID: 1720992384832227790, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
+      propertyPath: use_key.m_Name
+      value: Use_key
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720992384832227790, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
+      propertyPath: use_key.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720992384832227790, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
+      propertyPath: use_key.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 6d3184e3-1c3a-4a03-91b0-10c7565fead1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720992384832227790, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
+      propertyPath: use_key.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/r
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720992384832227790, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
+      propertyPath: use_key.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Use_key
+      objectReference: {fileID: 0}
+    - target: {fileID: 3115270486246402490, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
+      propertyPath: use_key.m_Name
+      value: Use_key
+      objectReference: {fileID: 0}
     - target: {fileID: 3586775954811729364, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1
@@ -5772,10 +5796,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5939410873444294533, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
+      propertyPath: use_key.m_Name
+      value: Use_key
+      objectReference: {fileID: 0}
     - target: {fileID: 6100774356092020931, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
       propertyPath: ambientconditions
       value: 
       objectReference: {fileID: 121792593}
+    - target: {fileID: 6207449536148352115, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
+      propertyPath: use_key.m_Name
+      value: Use_key
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052219981537504726, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
+      propertyPath: use_key.m_Name
+      value: Use_key
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

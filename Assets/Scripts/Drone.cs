@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
-using UnityEditor.Experimental;
+using UnityEngine.InputSystem;
 
 namespace Core
 {
@@ -15,17 +15,19 @@ namespace Core
         [SerializeField] GameObject center_of_mass;
         [SerializeField] Gyroscope gyroscope;
         [SerializeField] public WeatherStation weather_station;
-        float constant_prop_activation_value = 10f;
         protected Dictionary<string, Propeller> propellers;
         protected Rigidbody rb;
         protected float stasis_force = float.PositiveInfinity;
-        protected float target_v_stab_height;
         protected bool vert_stabilization;
         protected bool constant_prop_activation;
+        protected float target_v_stab_height;
+
+        protected float constant_prop_activation_value = 10f;
 
         //bool targeted_flight = false;
         //Vector3 flight_target;
         protected abstract void ManualSteering();
+        protected abstract void Controller(Vector3 euler_angles, float throttle);
         void Awake()
         {
             rb = GetComponent<Rigidbody>();
@@ -37,20 +39,20 @@ namespace Core
         }
         protected void Update()
         {
-            weather_station.GetAirDensity();
-            if (Input.GetKeyDown(KeyCode.Comma)) ToggleVerticalStabilization(true, weather_station.GetHeight());
-            if (Input.GetKeyDown(KeyCode.Period)) ToggleVerticalStabilization(false);
+            if (Keyboard.current.commaKey.isPressed) ToggleVerticalStabilization(true, weather_station.GetHeight());
+            if (Keyboard.current.periodKey.isPressed) ToggleVerticalStabilization(false);
 
             //if(Input.GetKeyDown(KeyCode.Semicolon)) {flight_target = transform.position;  targeted_flight = true;}
             //if(Input.GetKeyDown(KeyCode.Quote)) targeted_flight = false;
         }
         protected void FixedUpdate()
-        {
+        {   
             stasis_force = FindStasisForce(propellers.Count, rb.mass, gyroscope.GetReading());
             ManualSteering();
             if (constant_prop_activation) ConstantPropActivation(constant_prop_activation_value);
             if (vert_stabilization) VerticalStabilization(target_v_stab_height);
         }
+
         protected static float FindStasisForce(int propellerCount, float mass, Vector3 gyroscopeAngles)
         {
             // 1. Calculate gravity and the weight that needs to be lifted

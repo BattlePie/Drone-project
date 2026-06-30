@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using Core;
+using UnityEngine.InputSystem;
 public class Hexocopter : Drone
 {
     [SerializeField] public Propeller FL_propeller;
@@ -22,10 +23,14 @@ public class Hexocopter : Drone
 
         base.Start(); 
     }
+    protected override void Controller(Vector3 euler_angles, float throttle)
+    {
+        
+    }
     override protected void ManualSteering()
     {
         {
-        if (Input.GetKey(KeyCode.W))
+        if (Keyboard.current.wKey.isPressed)
         {
             propellers["BL"].SetPropellerForceFromRatio(1);
             propellers["BR"].SetPropellerForceFromRatio(1);
@@ -34,7 +39,7 @@ public class Hexocopter : Drone
             propellers["L"].SetPropellerForceFromRatio(0);
             propellers["R"].SetPropellerForceFromRatio(0);
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Keyboard.current.aKey.isPressed)
         {
             propellers["BL"].SetPropellerForceFromRatio(tilt_ratio);
             propellers["BR"].SetPropellerForceFromRatio(1);
@@ -43,7 +48,7 @@ public class Hexocopter : Drone
             propellers["L"].SetPropellerForceFromRatio(tilt_ratio);
             propellers["R"].SetPropellerForceFromRatio(1);
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Keyboard.current.sKey.isPressed)
         {
             propellers["BL"].SetPropellerForceFromRatio(tilt_ratio);
             propellers["BR"].SetPropellerForceFromRatio(tilt_ratio);
@@ -52,7 +57,7 @@ public class Hexocopter : Drone
             propellers["L"].SetPropellerForceFromRatio(0);
             propellers["R"].SetPropellerForceFromRatio(0);
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Keyboard.current.dKey.isPressed)
         {
             propellers["BL"].SetPropellerForceFromRatio(1);
             propellers["BR"].SetPropellerForceFromRatio(tilt_ratio);

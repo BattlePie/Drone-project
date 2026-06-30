@@ -12,6 +12,10 @@ public class StasisForceTests
         {
             return FindStasisForce(propeller_count, drone_mass, drone_tilt);
         }
+        protected override void Controller(Vector3 euler_angles, float throttle)
+        {
+            throw new System.NotImplementedException();
+        }
         protected override void ManualSteering()
         {
             throw new System.NotImplementedException();

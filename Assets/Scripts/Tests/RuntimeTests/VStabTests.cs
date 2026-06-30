@@ -8,6 +8,14 @@ using Core;
 
 public class VerticalStabilizationTests : MonoBehaviour
 {
+
+    [UnitySetUp]
+    public IEnumerator SetUp()
+    {
+        SceneManager.LoadScene("Testing Scene");
+        yield return null;
+    }
+
     private readonly static string[] DronePaths = { "Prefabs/Quadrocopter", "Prefabs/Octocopter", "Prefabs/Hexacopter" };
     readonly float recovery_time = 8f;
     [UnityTest]
@@ -29,8 +37,6 @@ public class VerticalStabilizationTests : MonoBehaviour
     public IEnumerator WhileFalling_DroneVertStabilization_Works(string drone_prefab_path, float fall_time)
     {
         // ARRANGE
-        SceneManager.LoadScene("VStabTesting");
-        yield return null;
         GameObject drone_instance = Instantiate(Resources.Load<GameObject>(drone_prefab_path), new Vector3(0,3,0), Quaternion.identity);
         Drone drone = drone_instance.GetComponent<Drone>();
         Rigidbody rb = drone.GetComponent<Rigidbody>();
@@ -58,8 +64,6 @@ float current_height = drone.transform.position.y;
     public IEnumerator WhileFlyingUp_DroneVertStabilization_Works(string drone_prefab_path)
     {
         //ARRANGE
-        SceneManager.LoadScene("Testing Scene");
-        yield return null;
         GameObject drone_instance = Instantiate(Resources.Load<GameObject>(drone_prefab_path), new Vector3(0,3,0), Quaternion.identity);
         Drone drone = drone_instance.GetComponent<Drone>();
         Rigidbody rb = drone.GetComponent<Rigidbody>();

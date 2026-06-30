@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 using Core;
+using UnityEngine.UIElements;
+using UnityEngine.InputSystem;
 public class Propeller : MonoBehaviour
 {
     public enum RotDirection{CW = -1, CCW = 1};
@@ -11,7 +13,7 @@ public class Propeller : MonoBehaviour
     [Header("Technical variables and relations")]
     [SerializeField] public float curr_force;
     [SerializeField] public float max_force = 5f;
-    [SerializeField] KeyCode use_key;
+    [SerializeField] InputAction use_key;
 
     [Header("Physical characteristics\n(default is DJI MAVIC 3 9453F low-noise) and rough estimations")]
     [SerializeField] public RotDirection rotation_direction = RotDirection.CCW;
@@ -42,7 +44,7 @@ public class Propeller : MonoBehaviour
         Debug.DrawRay(transform.position, transform.up, Color.green);
         Debug.DrawRay(transform.position, transform.forward, Color.blue);
 
-        if (Input.GetKey(KeyCode.Space) || Input.GetKey(use_key)) SetPropellerForce(10f);
+        if (Keyboard.current.spaceKey.isPressed || use_key.WasPressedThisFrame()) SetPropellerForce(10f);
         
         ApplyReactiveTorque();
     }
