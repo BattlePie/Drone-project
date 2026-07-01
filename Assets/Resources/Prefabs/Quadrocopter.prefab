@@ -45,7 +45,60 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Altimeter
   max_distance: 100
-  ambientconditions: {fileID: 0}
+  ambient_conditions: {fileID: 0}
+--- !u!1 &1635716889705692819
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2272511762063343057}
+  - component: {fileID: 2802584433059481696}
+  m_Layer: 7
+  m_Name: Battery
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2272511762063343057
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635716889705692819}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1857247800908283043}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2802584433059481696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635716889705692819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f00bb4113c12b74baf09ea55c4c3c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::Accumulator
+  capacity_Ah: 5
+  voltage: 22.2
+  electronics_current: 0.5
+  start_percentage: 19.6
+  charge_Ah: 0
+  charge_percentage: 0
+  total_current: 0
+  is_drone_disabled: 0
+  battery_text: {fileID: 0}
 --- !u!1 &3000216614343510555
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +146,17 @@ MonoBehaviour:
   angular_speed: 0
   curr_force: 0
   max_force: 10
-  use_key: 101
+  use_key:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 20d53b76-d22d-46f7-ae8e-06ce078f1de9
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  power_drain: 0
+  is_power_supplied: 1
   rotation_direction: 1
   RPM: 0
   thrust_coefficient: 0.115
@@ -140,6 +203,7 @@ Transform:
   - {fileID: 5153602590675225162}
   - {fileID: 3681625428528440928}
   - {fileID: 5765481619805942958}
+  - {fileID: 2272511762063343057}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6668884091574504545
@@ -215,7 +279,7 @@ MonoBehaviour:
   center_of_mass: {fileID: 7826973346833399033}
   gyroscope: {fileID: 3927161107985882917}
   weather_station: {fileID: 4574947291201672332}
-  constant_prop_activation: 0
+  hold_rotation: 0
   FL_propeller: {fileID: 6054642325880532599}
   FR_propeller: {fileID: 6768132509048839772}
   BL_propeller: {fileID: 3391908812236502932}
@@ -359,7 +423,17 @@ MonoBehaviour:
   angular_speed: 0
   curr_force: 0
   max_force: 10
-  use_key: 113
+  use_key:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ae724dba-7a41-418c-b41b-999b42fe2204
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  power_drain: 0
+  is_power_supplied: 1
   rotation_direction: -1
   RPM: 0
   thrust_coefficient: 0.115
@@ -443,7 +517,17 @@ MonoBehaviour:
   angular_speed: 0
   curr_force: 0
   max_force: 10
-  use_key: 122
+  use_key:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 9335dd8e-ae84-4357-ac0c-7cc01a0a42d6
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  power_drain: 0
+  is_power_supplied: 1
   rotation_direction: 1
   RPM: 0
   thrust_coefficient: 0.115
@@ -496,7 +580,17 @@ MonoBehaviour:
   angular_speed: 0
   curr_force: 0
   max_force: 10
-  use_key: 99
+  use_key:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 9b4aaba4-838b-4dd7-a405-734989f23977
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  power_drain: 0
+  is_power_supplied: 1
   rotation_direction: -1
   RPM: 0
   thrust_coefficient: 0.115

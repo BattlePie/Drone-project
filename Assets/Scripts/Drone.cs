@@ -18,6 +18,9 @@ namespace Core
         [SerializeField] public WeatherStation weather_station;
         protected Dictionary<string, Propeller> propellers;
         protected Rigidbody rb;
+
+      
+        public Dictionary<string, Propeller> GetPropellers() => propellers;
         protected float stasis_force = float.PositiveInfinity;
         protected bool vert_stabilization;
         protected bool constant_prop_activation;
