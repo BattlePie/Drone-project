@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Altimeter
   max_distance: 100
-  ambientconditions: {fileID: 0}
+  ambient_conditions: {fileID: 0}
 --- !u!1 &3000216614343510555
 GameObject:
   m_ObjectHideFlags: 0
@@ -56,6 +56,8 @@ GameObject:
   m_Component:
   - component: {fileID: 901363012592065491}
   - component: {fileID: 6768132509048839772}
+  - component: {fileID: 1151628265376563567}
+  - component: {fileID: 4980421686689394950}
   m_Layer: 2
   m_Name: Propeller FR
   m_TagString: Untagged
@@ -93,12 +95,135 @@ MonoBehaviour:
   angular_speed: 0
   curr_force: 0
   max_force: 10
-  use_key: 101
+  use_key:
+    m_Name: Use_key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 83b08c3c-5cc7-4e8d-8b34-9f4ac30be521
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   rotation_direction: 1
   RPM: 0
   thrust_coefficient: 0.115
   torque_coefficient: 0.0065
   radius: 0.1194
+--- !u!82 &1151628265376563567
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3000216614343510555}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 665e9054ff5efd345a66e199b0370cfa, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &4980421686689394950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3000216614343510555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7fb1ecbd0d1f5d48921cd8000785500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::PropellerSoundCalculation
+  propeller: {fileID: 0}
+  minPitch: 0.8
+  maxPitch: 3
+  minVolume: 0.2
+  maxVolume: 1
+  smoothing: 8
 --- !u!1 &3976767828808408601
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,11 +336,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 845b36152ad1e6048b324eb7e1f597c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Quadrocopter
-  tilt_ratio: 0.2
   center_of_mass: {fileID: 7826973346833399033}
   gyroscope: {fileID: 3927161107985882917}
   weather_station: {fileID: 4574947291201672332}
-  constant_prop_activation: 0
+  hold_rotation: 0
+  target_rotation: {x: 0, y: 0, z: 0}
   FL_propeller: {fileID: 6054642325880532599}
   FR_propeller: {fileID: 6768132509048839772}
   BL_propeller: {fileID: 3391908812236502932}
@@ -322,6 +447,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8687651538160014751}
   - component: {fileID: 6054642325880532599}
+  - component: {fileID: 3991945674812118956}
+  - component: {fileID: 229783387712782149}
   m_Layer: 2
   m_Name: Propeller FL
   m_TagString: Untagged
@@ -359,12 +486,135 @@ MonoBehaviour:
   angular_speed: 0
   curr_force: 0
   max_force: 10
-  use_key: 113
+  use_key:
+    m_Name: Use_key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: fecdaac4-2c35-42bb-8f40-adba7f234a9b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   rotation_direction: -1
   RPM: 0
   thrust_coefficient: 0.115
   torque_coefficient: 0.0065
   radius: 0.1194
+--- !u!82 &3991945674812118956
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6863061902671973590}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 665e9054ff5efd345a66e199b0370cfa, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &229783387712782149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6863061902671973590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7fb1ecbd0d1f5d48921cd8000785500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::PropellerSoundCalculation
+  propeller: {fileID: 0}
+  minPitch: 0.8
+  maxPitch: 3
+  minVolume: 0.2
+  maxVolume: 1
+  smoothing: 8
 --- !u!1 &7826973346833399033
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,6 +656,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7893767118531717964}
   - component: {fileID: 3391908812236502932}
+  - component: {fileID: 3374388575201630859}
+  - component: {fileID: 5923801800249246939}
   m_Layer: 2
   m_Name: Propeller BL
   m_TagString: Untagged
@@ -443,12 +695,135 @@ MonoBehaviour:
   angular_speed: 0
   curr_force: 0
   max_force: 10
-  use_key: 122
+  use_key:
+    m_Name: Use_key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: f6f0f533-b972-49dd-bedf-c3a14b3f62c7
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   rotation_direction: 1
   RPM: 0
   thrust_coefficient: 0.115
   torque_coefficient: 0.0065
   radius: 0.1194
+--- !u!82 &3374388575201630859
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8429206549237347517}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 665e9054ff5efd345a66e199b0370cfa, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &5923801800249246939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8429206549237347517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7fb1ecbd0d1f5d48921cd8000785500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::PropellerSoundCalculation
+  propeller: {fileID: 0}
+  minPitch: 0.8
+  maxPitch: 3
+  minVolume: 0.2
+  maxVolume: 1
+  smoothing: 8
 --- !u!1 &8648824997827166020
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +834,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2627768540595148189}
   - component: {fileID: 6967761356491333316}
+  - component: {fileID: 581580822865916134}
+  - component: {fileID: 3297725218678082850}
   m_Layer: 2
   m_Name: Propeller BR
   m_TagString: Untagged
@@ -496,9 +873,132 @@ MonoBehaviour:
   angular_speed: 0
   curr_force: 0
   max_force: 10
-  use_key: 99
+  use_key:
+    m_Name: Use_key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: b7f4f04f-a279-43b4-8b44-6d279656cdc3
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   rotation_direction: -1
   RPM: 0
   thrust_coefficient: 0.115
   torque_coefficient: 0.0065
   radius: 0.1194
+--- !u!82 &581580822865916134
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8648824997827166020}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 665e9054ff5efd345a66e199b0370cfa, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &3297725218678082850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8648824997827166020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7fb1ecbd0d1f5d48921cd8000785500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::PropellerSoundCalculation
+  propeller: {fileID: 0}
+  minPitch: 0.8
+  maxPitch: 3
+  minVolume: 0.2
+  maxVolume: 1
+  smoothing: 8
