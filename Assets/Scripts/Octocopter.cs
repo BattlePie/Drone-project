@@ -28,11 +28,28 @@ public class Octocopter : Drone
 
         base.Start(); 
     }
-    protected override Dictionary<string,float> SetDroneRotation(Vector3 euler_angles)
+    protected override Dictionary<string,float> SetDroneRotation(Vector3 target_angles)
     {
-        float roll = euler_angles.x;
-        float yaw = euler_angles.y;
-        float pitch = euler_angles.z;
+        float p_gain = 5f;
+        float d_gain = 1.5f;
+        float curr_roll =  gyroscope.GetReading().x;
+        float curr_yaw =   gyroscope.GetReading().y;
+        float curr_pitch = gyroscope.GetReading().z;
+
+        // 1. Считаем пропорциональную ошибку (на сколько градусов мы отклонились)
+        float error_roll = curr_roll - target_angles.x;
+        float error_yaw = curr_yaw - target_angles.y;
+        float error_pitch = curr_pitch - target_angles.z;
+
+        // 2. Берем текущую угловую скорость из Rigidbody (оси могут зависеть от ориентации дрона)
+        // Если rb.angularVelocity в локальных координатах, используйте rb.transform.InverseTransformDirection(rb.angularVelocity)
+        Vector3 local_angular_vel = transform.InverseTransformDirection(rb.angularVelocity);
+
+        // 3. PD-регулятор: (Ошибка * P) - (Угловая скорость * D)
+        float roll = (error_roll * p_gain) - (local_angular_vel.x * d_gain);
+        float yaw = (error_yaw * p_gain) - (local_angular_vel.y * d_gain);
+        float pitch = (error_pitch * p_gain) - (local_angular_vel.z * d_gain);
+
         float hover_force = FindStasisForce(propellers.Count, rb.mass, gyroscope.GetReading());
         const float DIAG = 0.7071f; // Pre-calculated sin/cos of 45 degrees
 
