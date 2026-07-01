@@ -129,6 +129,8 @@ GameObject:
   m_Component:
   - component: {fileID: 83342623}
   - component: {fileID: 83342624}
+  - component: {fileID: 83342626}
+  - component: {fileID: 83342625}
   m_Layer: 2
   m_Name: Propeller FR
   m_TagString: Untagged
@@ -163,11 +165,134 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cce8fe64bd9264891274c6951929d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Liftcomponent
+  angular_speed: 0
+  radius: 0
+  step: 0
   curr_force: 0
   max_force: 10
   use_key: 101
-  Drone: {fileID: 1658372852}
+  drone: {fileID: 1658372852}
   rotation_direction: 1
+  RPM: 0
+  thrust_coefficient: 0.0724
+  torque_coefficient: 0.057920005
+  radius_inch: 9.4
+  step_inch: 5.3
+--- !u!114 &83342625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83342622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7fb1ecbd0d1f5d48921cd8000785500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PropellerSoundCalculation
+  propeller: {fileID: 83342624}
+  minPitch: 0.8
+  maxPitch: 2
+  minVolume: 0.15
+  maxVolume: 1
+  smoothing: 3
+--- !u!82 &83342626
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83342622}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 665e9054ff5efd345a66e199b0370cfa, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &183259401
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,11 +322,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cce8fe64bd9264891274c6951929d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
+  angular_speed: 0
+  radius: 0
+  step: 0
   curr_force: 0
   max_force: 10
   use_key: 108
-  Drone: {fileID: 653091362}
+  drone: {fileID: 0}
   rotation_direction: 1
+  RPM: 0
+  thrust_coefficient: 0.0724
+  torque_coefficient: 0.057920005
+  radius_inch: 9.4
+  step_inch: 5.3
 --- !u!4 &183259403
 Transform:
   m_ObjectHideFlags: 0
@@ -246,11 +379,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cce8fe64bd9264891274c6951929d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
+  angular_speed: 0
+  radius: 0
+  step: 0
   curr_force: 0
   max_force: 10
   use_key: 44
-  Drone: {fileID: 2045085488}
+  drone: {fileID: 0}
   rotation_direction: 1
+  RPM: 0
+  thrust_coefficient: 0.0724
+  torque_coefficient: 0.057920005
+  radius_inch: 9.4
+  step_inch: 5.3
 --- !u!4 &288568171
 Transform:
   m_ObjectHideFlags: 0
@@ -295,11 +436,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cce8fe64bd9264891274c6951929d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
+  angular_speed: 0
+  radius: 0
+  step: 0
   curr_force: 0
   max_force: 10
   use_key: 44
-  Drone: {fileID: 653091362}
+  drone: {fileID: 0}
   rotation_direction: 1
+  RPM: 0
+  thrust_coefficient: 0.0724
+  torque_coefficient: 0.057920005
+  radius_inch: 9.4
+  step_inch: 5.3
 --- !u!4 &319962782
 Transform:
   m_ObjectHideFlags: 0
@@ -344,11 +493,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cce8fe64bd9264891274c6951929d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
+  angular_speed: 0
+  radius: 0
+  step: 0
   curr_force: 0
   max_force: 10
   use_key: 44
-  Drone: {fileID: 2045085488}
+  drone: {fileID: 0}
   rotation_direction: 1
+  RPM: 0
+  thrust_coefficient: 0.0724
+  torque_coefficient: 0.057920005
+  radius_inch: 9.4
+  step_inch: 5.3
 --- !u!4 &328870259
 Transform:
   m_ObjectHideFlags: 0
@@ -393,11 +550,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cce8fe64bd9264891274c6951929d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
+  angular_speed: 0
+  radius: 0
+  step: 0
   curr_force: 0
   max_force: 10
   use_key: 106
-  Drone: {fileID: 653091362}
+  drone: {fileID: 0}
   rotation_direction: 1
+  RPM: 0
+  thrust_coefficient: 0.0724
+  torque_coefficient: 0.057920005
+  radius_inch: 9.4
+  step_inch: 5.3
 --- !u!4 &422069464
 Transform:
   m_ObjectHideFlags: 0
@@ -518,6 +683,8 @@ GameObject:
   m_Component:
   - component: {fileID: 547150045}
   - component: {fileID: 547150046}
+  - component: {fileID: 547150048}
+  - component: {fileID: 547150047}
   m_Layer: 2
   m_Name: Propeller FL
   m_TagString: Untagged
@@ -552,11 +719,134 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cce8fe64bd9264891274c6951929d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
+  angular_speed: 0
+  radius: 0
+  step: 0
   curr_force: 0
   max_force: 10
   use_key: 113
-  Drone: {fileID: 1658372852}
+  drone: {fileID: 1658372852}
   rotation_direction: 1
+  RPM: 0
+  thrust_coefficient: 0.0724
+  torque_coefficient: 0.057920005
+  radius_inch: 9.4
+  step_inch: 5.3
+--- !u!114 &547150047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547150044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7fb1ecbd0d1f5d48921cd8000785500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PropellerSoundCalculation
+  propeller: {fileID: 547150046}
+  minPitch: 0.8
+  maxPitch: 2
+  minVolume: 0.15
+  maxVolume: 1
+  smoothing: 3
+--- !u!82 &547150048
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547150044}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 665e9054ff5efd345a66e199b0370cfa, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &553848545
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,11 +876,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cce8fe64bd9264891274c6951929d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
+  angular_speed: 0
+  radius: 0
+  step: 0
   curr_force: 0
   max_force: 10
   use_key: 44
-  Drone: {fileID: 2045085488}
+  drone: {fileID: 0}
   rotation_direction: 1
+  RPM: 0
+  thrust_coefficient: 0.0724
+  torque_coefficient: 0.057920005
+  radius_inch: 9.4
+  step_inch: 5.3
 --- !u!4 &553848547
 Transform:
   m_ObjectHideFlags: 0
@@ -699,11 +997,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cce8fe64bd9264891274c6951929d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
+  angular_speed: 0
+  radius: 0
+  step: 0
   curr_force: 0
   max_force: 10
   use_key: 44
-  Drone: {fileID: 2045085488}
+  drone: {fileID: 0}
   rotation_direction: 1
+  RPM: 0
+  thrust_coefficient: 0.0724
+  torque_coefficient: 0.057920005
+  radius_inch: 9.4
+  step_inch: 5.3
 --- !u!4 &565046175
 Transform:
   m_ObjectHideFlags: 0
@@ -853,7 +1159,7 @@ MonoBehaviour:
   tilt_ratio: 0.2
   center_of_mass: {fileID: 1872755884}
   gyroscope: {fileID: 498686779}
-  altimeter: {fileID: 1507514710}
+  weather_station: {fileID: 0}
   constant_prop_activation: 0
   FL_propeller: {fileID: 1836828994}
   FR_propeller: {fileID: 908998055}
@@ -923,11 +1229,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cce8fe64bd9264891274c6951929d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
+  angular_speed: 0
+  radius: 0
+  step: 0
   curr_force: 0
   max_force: 10
   use_key: 44
-  Drone: {fileID: 2045085488}
+  drone: {fileID: 0}
   rotation_direction: 1
+  RPM: 0
+  thrust_coefficient: 0.0724
+  torque_coefficient: 0.057920005
+  radius_inch: 9.4
+  step_inch: 5.3
 --- !u!4 &687756202
 Transform:
   m_ObjectHideFlags: 0
@@ -5808,11 +6122,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cce8fe64bd9264891274c6951929d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
+  angular_speed: 0
+  radius: 0
+  step: 0
   curr_force: 0
   max_force: 10
   use_key: 44
-  Drone: {fileID: 2045085488}
+  drone: {fileID: 0}
   rotation_direction: 1
+  RPM: 0
+  thrust_coefficient: 0.0724
+  torque_coefficient: 0.057920005
+  radius_inch: 9.4
+  step_inch: 5.3
 --- !u!4 &757370831
 Transform:
   m_ObjectHideFlags: 0
@@ -5943,11 +6265,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cce8fe64bd9264891274c6951929d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
+  angular_speed: 0
+  radius: 0
+  step: 0
   curr_force: 0
   max_force: 10
   use_key: 44
-  Drone: {fileID: 2045085488}
+  drone: {fileID: 0}
   rotation_direction: 1
+  RPM: 0
+  thrust_coefficient: 0.0724
+  torque_coefficient: 0.057920005
+  radius_inch: 9.4
+  step_inch: 5.3
 --- !u!1 &908998054
 GameObject:
   m_ObjectHideFlags: 0
@@ -5977,11 +6307,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cce8fe64bd9264891274c6951929d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Liftcomponent
+  angular_speed: 0
+  radius: 0
+  step: 0
   curr_force: 0
   max_force: 10
   use_key: 111
-  Drone: {fileID: 653091362}
+  drone: {fileID: 0}
   rotation_direction: 1
+  RPM: 0
+  thrust_coefficient: 0.0724
+  torque_coefficient: 0.057920005
+  radius_inch: 9.4
+  step_inch: 5.3
 --- !u!4 &908998056
 Transform:
   m_ObjectHideFlags: 0
@@ -6090,6 +6428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Altimeter
   max_distance: 100
+  ambientconditions: {fileID: 0}
 --- !u!1 &1181816340
 GameObject:
   m_ObjectHideFlags: 0
@@ -6388,6 +6727,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1355920847}
   - component: {fileID: 1355920848}
+  - component: {fileID: 1355920850}
+  - component: {fileID: 1355920849}
   m_Layer: 2
   m_Name: Propeller BR
   m_TagString: Untagged
@@ -6422,11 +6763,134 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cce8fe64bd9264891274c6951929d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
+  angular_speed: 0
+  radius: 0
+  step: 0
   curr_force: 0
   max_force: 10
   use_key: 99
-  Drone: {fileID: 1658372852}
+  drone: {fileID: 1658372852}
   rotation_direction: 1
+  RPM: 0
+  thrust_coefficient: 0.0724
+  torque_coefficient: 0.057920005
+  radius_inch: 9.4
+  step_inch: 5.3
+--- !u!114 &1355920849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355920846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7fb1ecbd0d1f5d48921cd8000785500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PropellerSoundCalculation
+  propeller: {fileID: 1355920848}
+  minPitch: 0.8
+  maxPitch: 2
+  minVolume: 0.15
+  maxVolume: 1
+  smoothing: 3
+--- !u!82 &1355920850
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355920846}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 665e9054ff5efd345a66e199b0370cfa, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1405194265
 GameObject:
   m_ObjectHideFlags: 0
@@ -6594,6 +7058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Altimeter
   max_distance: 100
+  ambientconditions: {fileID: 0}
 --- !u!4 &1507514711
 Transform:
   m_ObjectHideFlags: 0
@@ -6638,11 +7103,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cce8fe64bd9264891274c6951929d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
+  angular_speed: 0
+  radius: 0
+  step: 0
   curr_force: 0
   max_force: 10
   use_key: 109
-  Drone: {fileID: 653091362}
+  drone: {fileID: 0}
   rotation_direction: 1
+  RPM: 0
+  thrust_coefficient: 0.0724
+  torque_coefficient: 0.057920005
+  radius_inch: 9.4
+  step_inch: 5.3
 --- !u!4 &1579303796
 Transform:
   m_ObjectHideFlags: 0
@@ -6884,7 +7357,7 @@ MonoBehaviour:
   tilt_ratio: 0.2
   center_of_mass: {fileID: 1639191449}
   gyroscope: {fileID: 2121039311}
-  altimeter: {fileID: 1148302146}
+  weather_station: {fileID: 0}
   constant_prop_activation: 0
   FL_propeller: {fileID: 547150046}
   FR_propeller: {fileID: 83342624}
@@ -6919,11 +7392,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cce8fe64bd9264891274c6951929d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
+  angular_speed: 0
+  radius: 0
+  step: 0
   curr_force: 0
   max_force: 10
   use_key: 44
-  Drone: {fileID: 2045085488}
+  drone: {fileID: 0}
   rotation_direction: 1
+  RPM: 0
+  thrust_coefficient: 0.0724
+  torque_coefficient: 0.057920005
+  radius_inch: 9.4
+  step_inch: 5.3
 --- !u!4 &1665048442
 Transform:
   m_ObjectHideFlags: 0
@@ -6984,6 +7465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Altimeter
   max_distance: 100
+  ambientconditions: {fileID: 0}
 --- !u!1 &1719520928
 GameObject:
   m_ObjectHideFlags: 0
@@ -7038,6 +7520,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1790855537}
   - component: {fileID: 1790855538}
+  - component: {fileID: 1790855540}
+  - component: {fileID: 1790855539}
   m_Layer: 2
   m_Name: Propeller BL
   m_TagString: Untagged
@@ -7072,11 +7556,134 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cce8fe64bd9264891274c6951929d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
+  angular_speed: 0
+  radius: 0
+  step: 0
   curr_force: 0
   max_force: 10
   use_key: 122
-  Drone: {fileID: 1658372852}
+  drone: {fileID: 1658372852}
   rotation_direction: 1
+  RPM: 0
+  thrust_coefficient: 0.0724
+  torque_coefficient: 0.057920005
+  radius_inch: 9.4
+  step_inch: 5.3
+--- !u!114 &1790855539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790855536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7fb1ecbd0d1f5d48921cd8000785500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PropellerSoundCalculation
+  propeller: {fileID: 1790855538}
+  minPitch: 0.8
+  maxPitch: 2
+  minVolume: 0.15
+  maxVolume: 1
+  smoothing: 3
+--- !u!82 &1790855540
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790855536}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 665e9054ff5efd345a66e199b0370cfa, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1836828993
 GameObject:
   m_ObjectHideFlags: 0
@@ -7106,11 +7713,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cce8fe64bd9264891274c6951929d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propeller
+  angular_speed: 0
+  radius: 0
+  step: 0
   curr_force: 0
   max_force: 10
   use_key: 105
-  Drone: {fileID: 653091362}
+  drone: {fileID: 0}
   rotation_direction: 1
+  RPM: 0
+  thrust_coefficient: 0.0724
+  torque_coefficient: 0.057920005
+  radius_inch: 9.4
+  step_inch: 5.3
 --- !u!4 &1836828995
 Transform:
   m_ObjectHideFlags: 0
@@ -7242,7 +7857,7 @@ MonoBehaviour:
   tilt_ratio: 0.2
   center_of_mass: {fileID: 1621504555}
   gyroscope: {fileID: 1719520930}
-  altimeter: {fileID: 1712344446}
+  weather_station: {fileID: 0}
   constant_prop_activation: 0
   F_propeller: {fileID: 1665048441}
   FR_propeller: {fileID: 565046174}
