@@ -69,7 +69,8 @@ float current_height = drone.transform.position.y;
         Rigidbody rb = drone.GetComponent<Rigidbody>();
 
         // ACT
-        drone.ToggleConstantPropActivation(true, 6f);
+        drone.constant_prop_activation_value = 6f;
+        drone.ToggleConstantPropActivation(true);
         yield return new WaitForSeconds(1f);
         drone.ToggleConstantPropActivation(false);
         float expected_height = drone.transform.position.y;

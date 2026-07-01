@@ -10,9 +10,7 @@ namespace Core
     [RequireComponent(typeof(Rigidbody))]
     public abstract class Drone : MonoBehaviour
     {
-        [SerializeField]
-        [Tooltip("Пропорции включения первичных vs вторичных пропеллеров, при 1 вторичные пропллеры включаются на полную мощность, при нуле включаются только первичные")]
-        protected float tilt_ratio = 0.8f;
+        [SerializeField] readonly float max_tilt = 1f;
         [SerializeField] GameObject center_of_mass;
         [SerializeField] public Gyroscope gyroscope;
         [SerializeField] public WeatherStation weather_station;
@@ -25,14 +23,10 @@ namespace Core
         protected bool vert_stabilization;
         protected bool constant_prop_activation;
         protected float target_v_stab_height;
-        protected float constant_prop_activation_value = 10f;
-
+        public float constant_prop_activation_value = 10f;
         public bool hold_rotation;
-        private Vector3 target_rotation;
-
-        //bool targeted_flight = false;
-        //Vector3 flight_target;
-        protected abstract Dictionary<string, float> SetDroneRotation(Vector3 euler_angles);
+        public Vector3 target_rotation;
+        protected abstract Dictionary<string, float> SetDroneRotation(Vector3 target_angles);
         void Awake()
         {
             rb = GetComponent<Rigidbody>();
@@ -45,7 +39,14 @@ namespace Core
         protected void Update()
         {
             if (Keyboard.current.commaKey.isPressed) ToggleVerticalStabilization(true, weather_station.GetHeight());
-            if (Keyboard.current.periodKey.isPressed) ToggleVerticalStabilization(false);
+            else if (Keyboard.current.periodKey.isPressed) ToggleVerticalStabilization(false);
+            else if (Keyboard.current.wKey.isPressed) ToggleHoldRotation(true, new(0, 0,  max_tilt));
+            else if (Keyboard.current.sKey.isPressed) ToggleHoldRotation(true, new(0, 0, -max_tilt));
+            else if (Keyboard.current.aKey.isPressed) ToggleHoldRotation(true, new(-max_tilt, 0, 0));
+            else if (Keyboard.current.dKey.isPressed) ToggleHoldRotation(true, new( max_tilt, 0, 0));
+            else if (Keyboard.current.spaceKey.isPressed) ToggleConstantPropActivation(true);
+            else if (Keyboard.current.spaceKey.wasReleasedThisFrame) ToggleConstantPropActivation(false);
+            else if (Keyboard.current.fKey.wasReleasedThisFrame) ToggleHoldRotation(false, Vector3.zero);
 
             //if(Input.GetKeyDown(KeyCode.Semicolon)) {flight_target = Vector3.zero;  targeted_flight = true;}
             //if(Input.GetKeyDown(KeyCode.Quote)) targeted_flight = false;
@@ -55,11 +56,13 @@ namespace Core
             Dictionary<string, float> activation_from_target_angle = SetDroneRotation(target_rotation);
             Dictionary<string, float> final_propeller_force = new();
 
-            foreach(string propeller_name in activation_from_target_angle.Keys)
+            foreach(string propeller_name in propellers.Keys)
             {
                 final_propeller_force[propeller_name] = 0;
-                if (hold_rotation) final_propeller_force[propeller_name] += activation_from_target_angle[propeller_name];
-                if (vert_stabilization) final_propeller_force[propeller_name] += VerticalStabilization(target_v_stab_height);
+
+                if (hold_rotation)            final_propeller_force[propeller_name] += activation_from_target_angle[propeller_name];
+                if (vert_stabilization)       final_propeller_force[propeller_name] += VerticalStabilization(target_v_stab_height);
+                if (constant_prop_activation) final_propeller_force[propeller_name] += ConstantPropActivation(constant_prop_activation_value);
                 propellers[propeller_name].SetPropellerForce(final_propeller_force[propeller_name]);
             }
         }
@@ -100,11 +103,9 @@ namespace Core
             hold_rotation = state;
             if (state) target_rotation = rotation; 
         }
-        public void ToggleConstantPropActivation(bool state, float force = 0f)
+        public void ToggleConstantPropActivation(bool state)
         {
             constant_prop_activation = state;
-            if (state) constant_prop_activation_value = force;
-            else constant_prop_activation_value = 0f;
         }
         public float VerticalStabilization(float target_height)
         {
@@ -122,14 +123,14 @@ namespace Core
             }
             float offset = target_height - height;
             target_force = stasis_force + offset - rb.linearVelocity.y;
-            Debug.Log("target force = " + target_force);
+            //Debug.Log("target force = " + target_force);
             if (target_force < 0) target_force = 0;
 
             return target_force;
         }
-        public void ConstantPropActivation(float value)
-        {//for testing 
-            foreach (Propeller prop in propellers.Values) prop.SetPropellerForce(value);
+        public float ConstantPropActivation(float value)
+        {
+            return value;
         }
     }
 }
