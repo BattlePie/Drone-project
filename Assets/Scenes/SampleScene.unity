@@ -11395,6 +11395,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 229783387712782149, guid: ad8e00640e143da48985b314130c076d, type: 3}
+      propertyPath: maxVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 229783387712782149, guid: ad8e00640e143da48985b314130c076d, type: 3}
+      propertyPath: minVolume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151628265376563567, guid: ad8e00640e143da48985b314130c076d, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 665e9054ff5efd345a66e199b0370cfa, type: 3}
     - target: {fileID: 1857247800908283043, guid: ad8e00640e143da48985b314130c076d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -11435,6 +11447,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3297725218678082850, guid: ad8e00640e143da48985b314130c076d, type: 3}
+      propertyPath: maxVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3297725218678082850, guid: ad8e00640e143da48985b314130c076d, type: 3}
+      propertyPath: minVolume
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3976767828808408601, guid: ad8e00640e143da48985b314130c076d, type: 3}
       propertyPath: m_Name
       value: Quadrocopter
@@ -11447,6 +11467,22 @@ PrefabInstance:
       propertyPath: ambientconditions
       value: 
       objectReference: {fileID: 121792593}
+    - target: {fileID: 4980421686689394950, guid: ad8e00640e143da48985b314130c076d, type: 3}
+      propertyPath: maxVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4980421686689394950, guid: ad8e00640e143da48985b314130c076d, type: 3}
+      propertyPath: minVolume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923801800249246939, guid: ad8e00640e143da48985b314130c076d, type: 3}
+      propertyPath: maxVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923801800249246939, guid: ad8e00640e143da48985b314130c076d, type: 3}
+      propertyPath: minVolume
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11460,10 +11496,66 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 345058046957571461, guid: 9925f577f34499f43add03e34ee35558, type: 3}
+      propertyPath: maxVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 345058046957571461, guid: 9925f577f34499f43add03e34ee35558, type: 3}
+      propertyPath: minVolume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490592552304489139, guid: 9925f577f34499f43add03e34ee35558, type: 3}
+      propertyPath: maxVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490592552304489139, guid: 9925f577f34499f43add03e34ee35558, type: 3}
+      propertyPath: minVolume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2293508335600924758, guid: 9925f577f34499f43add03e34ee35558, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761407953585836083, guid: 9925f577f34499f43add03e34ee35558, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2854059198790700652, guid: 9925f577f34499f43add03e34ee35558, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4249555202741737998, guid: 9925f577f34499f43add03e34ee35558, type: 3}
+      propertyPath: maxVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4249555202741737998, guid: 9925f577f34499f43add03e34ee35558, type: 3}
+      propertyPath: minVolume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4749954645277480609, guid: 9925f577f34499f43add03e34ee35558, type: 3}
+      propertyPath: maxVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4749954645277480609, guid: 9925f577f34499f43add03e34ee35558, type: 3}
+      propertyPath: minVolume
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4928786972387752929, guid: 9925f577f34499f43add03e34ee35558, type: 3}
       propertyPath: ambientconditions
       value: 
       objectReference: {fileID: 121792593}
+    - target: {fileID: 5222920015611325695, guid: 9925f577f34499f43add03e34ee35558, type: 3}
+      propertyPath: maxVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5222920015611325695, guid: 9925f577f34499f43add03e34ee35558, type: 3}
+      propertyPath: minVolume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5314964184456685383, guid: 9925f577f34499f43add03e34ee35558, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6179690142336415203, guid: 9925f577f34499f43add03e34ee35558, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1
@@ -11504,6 +11596,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6916591766540447952, guid: 9925f577f34499f43add03e34ee35558, type: 3}
+      propertyPath: maxVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6916591766540447952, guid: 9925f577f34499f43add03e34ee35558, type: 3}
+      propertyPath: minVolume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8067850309322030126, guid: 9925f577f34499f43add03e34ee35558, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8856302685604400442, guid: 9925f577f34499f43add03e34ee35558, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9005371158595729468, guid: 9925f577f34499f43add03e34ee35558, type: 3}
       propertyPath: m_Name
       value: Hexocopter
@@ -11525,9 +11633,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 296500020016657409, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
+      propertyPath: maxVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 296500020016657409, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
+      propertyPath: minVolume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 570357515287275793, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
+      propertyPath: maxVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 570357515287275793, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
+      propertyPath: minVolume
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1091221594854264820, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
       propertyPath: m_Name
       value: Octocopter
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364052175434179929, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
+      propertyPath: maxVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364052175434179929, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
+      propertyPath: minVolume
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1720992384832227790, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
       propertyPath: use_key.m_Name
@@ -11597,6 +11729,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3590720725784515587, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
+      propertyPath: maxVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3590720725784515587, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
+      propertyPath: minVolume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4974310314560167233, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
+      propertyPath: maxVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4974310314560167233, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
+      propertyPath: minVolume
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5939410873444294533, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
       propertyPath: use_key.m_Name
       value: Use_key
@@ -11609,9 +11757,33 @@ PrefabInstance:
       propertyPath: use_key.m_Name
       value: Use_key
       objectReference: {fileID: 0}
+    - target: {fileID: 6588332786383776378, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
+      propertyPath: maxVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6588332786383776378, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
+      propertyPath: minVolume
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7052219981537504726, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
       propertyPath: use_key.m_Name
       value: Use_key
+      objectReference: {fileID: 0}
+    - target: {fileID: 8433602143270942042, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
+      propertyPath: maxVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8433602143270942042, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
+      propertyPath: minVolume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8714492814931983018, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
+      propertyPath: maxVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8714492814931983018, guid: 3b1d8b9e9cacfe04e9067e0f2240f824, type: 3}
+      propertyPath: minVolume
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

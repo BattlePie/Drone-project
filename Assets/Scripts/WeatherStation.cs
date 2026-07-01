@@ -16,12 +16,12 @@ public class WeatherStation : MonoBehaviour
             throw new Exception("No ambient conditions found in current scene");
         }
     }
-    public double GetAirDensity()
-    {   double r = 1.225f * Math.Pow(Math.E, -0.02896 * 9.81 * GetHeight()/(8.314 * (GetTemperature_C() + 273.15f)));// M_air*g*h/(R*T)
+    public float GetAirDensity()
+    {   float r = 1.225f * (float)Math.Pow(Math.E, -0.02896 * 9.81 * GetHeight()/(8.314 * (GetTemperature_C() + 273.15f)));// M_air*g*h/(R*T)
         //Debug.Log("Air density:" + r);
         return r;
     }
-    public double GetTemperature_C()
+    public float GetTemperature_C()
     {
         return ambient_conditions.temperature;
     }

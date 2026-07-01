@@ -121,7 +121,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 665e9054ff5efd345a66e199b0370cfa, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -218,10 +218,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7fb1ecbd0d1f5d48921cd8000785500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Scripts::PropellerSoundCalculation
-  propeller: {fileID: 0}
   minPitch: 0.8
   maxPitch: 3
-  minVolume: 0.2
+  minVolume: 0
   maxVolume: 1
   smoothing: 8
 --- !u!1 &3976767828808408601
@@ -512,7 +511,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 665e9054ff5efd345a66e199b0370cfa, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -609,10 +608,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7fb1ecbd0d1f5d48921cd8000785500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Scripts::PropellerSoundCalculation
-  propeller: {fileID: 0}
   minPitch: 0.8
   maxPitch: 3
-  minVolume: 0.2
+  minVolume: 0
   maxVolume: 1
   smoothing: 8
 --- !u!1 &7826973346833399033
@@ -721,7 +719,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 665e9054ff5efd345a66e199b0370cfa, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -818,10 +816,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7fb1ecbd0d1f5d48921cd8000785500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Scripts::PropellerSoundCalculation
-  propeller: {fileID: 0}
   minPitch: 0.8
   maxPitch: 3
-  minVolume: 0.2
+  minVolume: 0
   maxVolume: 1
   smoothing: 8
 --- !u!1 &8648824997827166020
@@ -899,7 +896,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 665e9054ff5efd345a66e199b0370cfa, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -996,9 +993,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7fb1ecbd0d1f5d48921cd8000785500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Scripts::PropellerSoundCalculation
-  propeller: {fileID: 0}
   minPitch: 0.8
   maxPitch: 3
-  minVolume: 0.2
+  minVolume: 0
   maxVolume: 1
   smoothing: 8
