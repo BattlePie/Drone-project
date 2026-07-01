@@ -14,6 +14,10 @@ public class Propeller : MonoBehaviour
     [SerializeField] public float max_force = 10f;
     [SerializeField] InputAction use_key;
 
+    [Header("Power")]
+    [SerializeField] public float power_drain;          // текущее потребление энергии, Вт
+    [SerializeField] public bool is_power_supplied = true; // есть ли питание от аккумулятора
+
     [Header("Physical characteristics\n(default is DJI MAVIC 3 9453F low-noise) and rough estimations")]
     [SerializeField] public RotDirection rotation_direction = RotDirection.CCW;
     [SerializeField] public float RPM;
@@ -42,15 +46,20 @@ public class Propeller : MonoBehaviour
         float airDensity = drone.weather_station.GetAirDensity();
         double diameterPower4 = Math.Pow(radius * 2f, 4);
         float denominator = thrust_coefficient * airDensity * (float)diameterPower4;
+        UpdatePowerDrain();
+     }
+     // Мощность = крутящий момент * угловая скорость (P = τ * ω)
+    // пересчитываем angular_speed после возможного обновления RPM за этот кадр,
+    // чтобы power_drain соответствовал актуальному состоянию пропеллера
+    void UpdatePowerDrain()
+    {
+        angular_speed = RPM * (float)Math.PI / 30f;
+        power_drain = Mathf.Abs(GetReactiveTorque(curr_force) * angular_speed);
+    }
 
-        if (denominator > 0f)
-        {
-            RPM = 60f * (float)Math.Sqrt(curr_force / denominator);
-        }
-        else
-        {
-            RPM = 0f;
-        }
+    public void toggle_power(bool state)
+    {
+        is_power_supplied = state;
     }
 
     angular_speed = RPM * (float)Math.PI / 30f;
@@ -66,6 +75,11 @@ public class Propeller : MonoBehaviour
 // Clean up your original method so it only handles the force storage
 public void SetPropellerForce(float i_curr_force)
 {   
+     if (!is_power_supplied)
+        {
+            Debug.Log("нет электричества");
+            return;
+        }
     if(i_curr_force < 0)              Debug.LogWarning("Tried to set propeller activation below zero: " + i_curr_force); 
     else if(i_curr_force > max_force) Debug.LogWarning("Tried to set propeller activation above max: " + i_curr_force);
 
@@ -75,6 +89,8 @@ public void SetPropellerForce(float i_curr_force)
 
     curr_force = Math.Clamp(i_curr_force, 0, max_force);
     rb.AddForceAtPosition(curr_force * transform.up, transform.position, ForceMode.Force);
+    ApplyReactiveTorque();
+
 }
     public void SetPropellerForceFromRatio(float ratio)
     {
