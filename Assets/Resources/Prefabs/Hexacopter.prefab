@@ -102,6 +102,8 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  power_drain: 0
+  is_power_supplied: 1
   rotation_direction: -1
   RPM: 0
   thrust_coefficient: 0.115
@@ -220,7 +222,9 @@ MonoBehaviour:
   maxPitch: 3
   minVolume: 0
   maxVolume: 1
-  smoothing: 8
+  masterVolumeCeiling: 0.2
+  spinUpSmoothing: 50
+  spinDownSmoothing: 1.5
 --- !u!1 &1589119683979716873
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,6 +283,8 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  power_drain: 0
+  is_power_supplied: 1
   rotation_direction: -1
   RPM: 0
   thrust_coefficient: 0.115
@@ -397,7 +403,9 @@ MonoBehaviour:
   maxPitch: 3
   minVolume: 0
   maxVolume: 1
-  smoothing: 8
+  masterVolumeCeiling: 0.2
+  spinUpSmoothing: 50
+  spinDownSmoothing: 1.5
 --- !u!1 &2295145523825125590
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,6 +510,8 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  power_drain: 0
+  is_power_supplied: 1
   rotation_direction: 1
   RPM: 0
   thrust_coefficient: 0.115
@@ -620,7 +630,9 @@ MonoBehaviour:
   maxPitch: 3
   minVolume: 0
   maxVolume: 1
-  smoothing: 8
+  masterVolumeCeiling: 0.2
+  spinUpSmoothing: 50
+  spinDownSmoothing: 1.5
 --- !u!1 &3068426588307208749
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,6 +722,8 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  power_drain: 0
+  is_power_supplied: 1
   rotation_direction: 1
   RPM: 0
   thrust_coefficient: 0.115
@@ -828,7 +842,9 @@ MonoBehaviour:
   maxPitch: 3
   minVolume: 0
   maxVolume: 1
-  smoothing: 8
+  masterVolumeCeiling: 0.2
+  spinUpSmoothing: 50
+  spinDownSmoothing: 1.5
 --- !u!1 &6473257026517481615
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,6 +903,8 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  power_drain: 0
+  is_power_supplied: 1
   rotation_direction: 1
   RPM: 0
   thrust_coefficient: 0.115
@@ -1005,7 +1023,9 @@ MonoBehaviour:
   maxPitch: 3
   minVolume: 0
   maxVolume: 1
-  smoothing: 8
+  masterVolumeCeiling: 0.2
+  spinUpSmoothing: 50
+  spinDownSmoothing: 1.5
 --- !u!1 &7314918171027059941
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,6 +1084,8 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  power_drain: 0
+  is_power_supplied: 1
   rotation_direction: -1
   RPM: 0
   thrust_coefficient: 0.115
@@ -1182,7 +1204,62 @@ MonoBehaviour:
   maxPitch: 3
   minVolume: 0
   maxVolume: 1
-  smoothing: 8
+  masterVolumeCeiling: 0.2
+  spinUpSmoothing: 50
+  spinDownSmoothing: 1.5
+--- !u!1 &7840934319292519648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7867711810674276380}
+  - component: {fileID: 7005862341818019852}
+  m_Layer: 0
+  m_Name: Battery
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7867711810674276380
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7840934319292519648}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.98084, y: -1, z: 1.4804399}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6179690142336415203}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7005862341818019852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7840934319292519648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f00bb4113c12b74baf09ea55c4c3c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::Accumulator
+  capacity_Ah: 5
+  voltage: 22.2
+  electronics_current: 0.5
+  start_percentage: 5
+  charge_Ah: 0
+  charge_percentage: 0
+  total_current: 0
+  is_drone_disabled: 0
+  battery_text: {fileID: 0}
 --- !u!1 &9005371158595729468
 GameObject:
   m_ObjectHideFlags: 0
@@ -1226,6 +1303,7 @@ Transform:
   - {fileID: 7716372507311931470}
   - {fileID: 740631592400767220}
   - {fileID: 7821892906794011127}
+  - {fileID: 7867711810674276380}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6571405650252768605
@@ -1300,6 +1378,7 @@ MonoBehaviour:
   center_of_mass: {fileID: 3068426588307208749}
   gyroscope: {fileID: 6126535692633438342}
   weather_station: {fileID: 4928786972387752929}
+  constant_prop_activation_value: 10
   hold_rotation: 0
   target_rotation: {x: 0, y: 0, z: 0}
   FL_propeller: {fileID: 2137749334748427012}

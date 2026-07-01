@@ -108,7 +108,7 @@ public class Accumulator : MonoBehaviour
 
         foreach (Propeller propeller in propellers.Values)
         {
-            propeller.toggle_power(false);
+            propeller.TogglePower(false);
         }
     }
 }

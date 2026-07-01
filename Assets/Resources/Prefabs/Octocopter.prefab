@@ -91,6 +91,7 @@ Transform:
   - {fileID: 6288063602804606134}
   - {fileID: 8348839913518792083}
   - {fileID: 1276354122150896559}
+  - {fileID: 5953517488453626248}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1916467617390783532
@@ -165,6 +166,7 @@ MonoBehaviour:
   center_of_mass: {fileID: 8833008895942623674}
   gyroscope: {fileID: 2787649299210099127}
   weather_station: {fileID: 6100774356092020931}
+  constant_prop_activation_value: 10
   hold_rotation: 0
   target_rotation: {x: 0, y: 0, z: 0}
   F_propeller: {fileID: 5939410873444294533}
@@ -282,6 +284,8 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  power_drain: 0
+  is_power_supplied: 1
   rotation_direction: -1
   RPM: 0
   thrust_coefficient: 0.115
@@ -400,7 +404,9 @@ MonoBehaviour:
   maxPitch: 3
   minVolume: 0
   maxVolume: 1
-  smoothing: 8
+  masterVolumeCeiling: 0.2
+  spinUpSmoothing: 50
+  spinDownSmoothing: 1.5
 --- !u!1 &3011657238160884127
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,6 +509,8 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  power_drain: 0
+  is_power_supplied: 1
   rotation_direction: -1
   RPM: 0
   thrust_coefficient: 0.115
@@ -621,7 +629,9 @@ MonoBehaviour:
   maxPitch: 3
   minVolume: 0
   maxVolume: 1
-  smoothing: 8
+  masterVolumeCeiling: 0.2
+  spinUpSmoothing: 50
+  spinDownSmoothing: 1.5
 --- !u!1 &4176355199501113210
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,6 +690,8 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  power_drain: 0
+  is_power_supplied: 1
   rotation_direction: 1
   RPM: 0
   thrust_coefficient: 0.115
@@ -798,7 +810,62 @@ MonoBehaviour:
   maxPitch: 3
   minVolume: 0
   maxVolume: 1
-  smoothing: 8
+  masterVolumeCeiling: 0.2
+  spinUpSmoothing: 50
+  spinDownSmoothing: 1.5
+--- !u!1 &4953289617558337248
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5953517488453626248}
+  - component: {fileID: 8384307884982036644}
+  m_Layer: 0
+  m_Name: Battery
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5953517488453626248
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4953289617558337248}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3586775954811729364}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8384307884982036644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4953289617558337248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f00bb4113c12b74baf09ea55c4c3c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::Accumulator
+  capacity_Ah: 5
+  voltage: 22.2
+  electronics_current: 0.5
+  start_percentage: 5
+  charge_Ah: 0
+  charge_percentage: 0
+  total_current: 0
+  is_drone_disabled: 0
+  battery_text: {fileID: 0}
 --- !u!1 &6350581012528672837
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,6 +924,8 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  power_drain: 0
+  is_power_supplied: 1
   rotation_direction: -1
   RPM: 0
   thrust_coefficient: 0.115
@@ -975,7 +1044,9 @@ MonoBehaviour:
   maxPitch: 3
   minVolume: 0
   maxVolume: 1
-  smoothing: 8
+  masterVolumeCeiling: 0.2
+  spinUpSmoothing: 50
+  spinDownSmoothing: 1.5
 --- !u!1 &7365233410070280963
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,6 +1105,8 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  power_drain: 0
+  is_power_supplied: 1
   rotation_direction: 1
   RPM: 0
   thrust_coefficient: 0.115
@@ -1152,7 +1225,9 @@ MonoBehaviour:
   maxPitch: 3
   minVolume: 0
   maxVolume: 1
-  smoothing: 8
+  masterVolumeCeiling: 0.2
+  spinUpSmoothing: 50
+  spinDownSmoothing: 1.5
 --- !u!1 &7580893580293746801
 GameObject:
   m_ObjectHideFlags: 0
@@ -1211,6 +1286,8 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  power_drain: 0
+  is_power_supplied: 1
   rotation_direction: 1
   RPM: 0
   thrust_coefficient: 0.115
@@ -1329,7 +1406,9 @@ MonoBehaviour:
   maxPitch: 3
   minVolume: 0
   maxVolume: 1
-  smoothing: 8
+  masterVolumeCeiling: 0.2
+  spinUpSmoothing: 50
+  spinDownSmoothing: 1.5
 --- !u!1 &8762504555576591716
 GameObject:
   m_ObjectHideFlags: 0
@@ -1388,6 +1467,8 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  power_drain: 0
+  is_power_supplied: 1
   rotation_direction: -1
   RPM: 0
   thrust_coefficient: 0.115
@@ -1506,7 +1587,9 @@ MonoBehaviour:
   maxPitch: 3
   minVolume: 0
   maxVolume: 1
-  smoothing: 8
+  masterVolumeCeiling: 0.2
+  spinUpSmoothing: 50
+  spinDownSmoothing: 1.5
 --- !u!1 &8800155540112149349
 GameObject:
   m_ObjectHideFlags: 0
@@ -1565,6 +1648,8 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  power_drain: 0
+  is_power_supplied: 1
   rotation_direction: 1
   RPM: 0
   thrust_coefficient: 0.115
@@ -1683,7 +1768,9 @@ MonoBehaviour:
   maxPitch: 3
   minVolume: 0
   maxVolume: 1
-  smoothing: 8
+  masterVolumeCeiling: 0.2
+  spinUpSmoothing: 50
+  spinDownSmoothing: 1.5
 --- !u!1 &8833008895942623674
 GameObject:
   m_ObjectHideFlags: 0
