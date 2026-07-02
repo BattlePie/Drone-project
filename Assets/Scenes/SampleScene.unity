@@ -484,7 +484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efef51fbcf76d364bb3ab27dac8ae069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ambientconditions
-  atmospheric_pressure: 101325
+  sea_level_pressure: 101325
   temperature: 20
 --- !u!4 &121792594
 Transform:
